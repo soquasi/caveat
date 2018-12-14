@@ -118,9 +118,8 @@ Report howtoasking:
 
 Table 2.0 - how-to-topics
 topic	helptext
-"store [the data]"	"Easy as pie: First, make sure your data is in a form the cli is able to understand. (You can convert them using the cli), then ..."
-"convert [the data]" or "convert [the file]"	"To convert data from a shapefile to JSON, ...."
-"upload [the data]" or "upload [the file]"	"You can upload your data with the HERE CLI"
+"store [the data]" or "upload [the data]" or "upload [the file]"	"Easy as pie: First, make sure your data is in a form the cli is able to understand. (You can convert them using the cli), then you type 'here xyz upload YOUR_SPACE_ID -f /path/to/your/data.csv' or 'here xyz upload YOUR_SPACE_ID -f /path/to/your/data.geojson' at the command prompt"
+"convert [the data]" or "convert [the file]" or "transform [the data]" or "transform [the file]"	"The command for converting data from a shapefile to JSON is 'here transform shp2geo filename.shp'"
 
 [Understand "hub" or "xyz" as "[here xyz]." Instead of npcasking [here xyz], tr]
 Understand "help" as summoning help. Summoning help is an action applying to nothing. 
