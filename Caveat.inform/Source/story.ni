@@ -33,8 +33,8 @@ Before of going north in Introduction:
 	now the currently shown picture is the figure of the newt;
 	follow the current graphics drawing rule.
 	
-After going north in introduction:
-	now the player is on the chair.
+After going north in introduction for the first time:
+	try the player entering the chair.
 	
 Understand "lamp" or "light" or "torch" as the flashlight.
 	
@@ -42,7 +42,7 @@ Chapter 2 - The Office
 
 The Office is north of the introduction. "[line break]Now you're sitting here in front of your computer, turning the battered flash drive in your fingers and wondering whether you should insert this unknown device in your laptop."
 The USB flash drive is a thing. The description is "Its plastic part is teal blue, rough around the edges and you can see the marks of small teeth on it." The printed name of the USB flash drive is "flash drive".
-The chair is a supporter in the office.
+The chair is an enterable supporter in the office. the description is "Almost too comfortable for working."
 The laptop is a thing in the office. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come.".
 The USB slot is an open container and part of the laptop.
 
@@ -61,7 +61,7 @@ After inserting the usb flash drive into the usb slot for the first time:
 	
 
 Understand "slot" or "USB" or "USB slot" as the USB slot.
-Understand "USB" or "flash drive" or "drive" or "plug" or "gnawed/tattered/teal/blue" as the USB flash drive.
+Understand "USB" or "flash drive" or "flash storage" or "storage"  or "USB stick" or "drive" or "plug" or "gnawed/tattered/teal/blue" as the USB flash drive.
 Understand "computer" or "PC" or "your computer" or "my computer" or "your PC" or "my PC" or
  "your laptop" or "my laptop" as "[the laptop]".
 
