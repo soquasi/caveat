@@ -1,3 +1,6 @@
 # Inform IDE directories
 /Index
 /Build
+
+# Inform Skein file (threads followed in the game)
+*.skein

@@ -19,7 +19,7 @@ Rule for starting the virtual machine:
 	follow the current graphics drawing rule;
 	move USB flash drive to player.
 	
-Introduction is a room. "[line break][italic type]This is an interactive tutorial. You can type 'next' or 'n'' to advance to the next step in the tutorial. Type 'help' if you need further assistance.[line break][roman type]You found it in a cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it up soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.".
+Introduction is a room. "[line break][if unvisited][italic type]This is an interactive tutorial. You can type 'next' or 'n'' to advance to the next step in the tutorial. Type 'help' if you need further assistance.[line break][roman type][end if]You found it in a cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it up soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.".
 The flashlight is a device in introduction. it is scenery and switched on.
 Every turn when the flashlight is switched on:
 	now the flashlight is lit.
@@ -33,18 +33,32 @@ Before of going north in Introduction:
 	now the currently shown picture is the figure of the newt;
 	follow the current graphics drawing rule.
 	
+<<<<<<< HEAD
 After going north in introduction for the first time:
 	try the player entering the chair.
+=======
+After going north from introduction for the first time:
+	try silently entering the chair.
+>>>>>>> 20c1f45b45c566275fe0dbdb0f804d8c35ef3268
 	
 Understand "lamp" or "light" or "torch" as the flashlight.
 	
 Chapter 2 - The Office
 
-The Office is north of the introduction. "[line break]Now you're sitting here in front of your computer, turning the battered flash drive in your fingers and wondering whether you should insert this unknown device in your laptop."
+The Office is north of the introduction. "[line break][if unvisited]Now y[otherwise]Y[end if]ou're sitting here in front of your computer[if unvisited], turning the battered flash drive in your fingers and wondering whether you should insert this unknown device in your laptop[end if]."
 The USB flash drive is a thing. The description is "Its plastic part is teal blue, rough around the edges and you can see the marks of small teeth on it." The printed name of the USB flash drive is "flash drive".
+<<<<<<< HEAD
 The chair is an enterable supporter in the office. the description is "Almost too comfortable for working."
+=======
+The chair is an enterable supporter in the office.
+>>>>>>> 20c1f45b45c566275fe0dbdb0f804d8c35ef3268
 The laptop is a thing in the office. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come.".
 The USB slot is an open container and part of the laptop.
+
+The stored data is nowhere. The printed name of the stored data is "data from the flash drive".
+
+Before of inserting the flash drive into the usb slot:
+	now the stored data is part of the laptop.
 
 Instead of inserting something into the laptop:
 	try inserting the noun into the USB slot.
@@ -123,7 +137,7 @@ topic	helptext
 
 [Understand "hub" or "xyz" as "[here xyz]." Instead of npcasking [here xyz], tr]
 Understand "help" as summoning help. Summoning help is an action applying to nothing. 
-Report summoning help: say "To follow the tutorial, type 'next' or 'n'. You can ask about subjects you do not quite get at any time. (For example, try typing 'what is node' at the prompt)".
+Report summoning help: say "To follow the tutorial, type 'next' or 'n'. You can ask about subjects you do not quite get at any time. (For example, try typing 'what is node' at the prompt).".
 
 Understand "a file" or "my file" or "your file" or "the file" as "[the file]".
 Understand "data" or "my data" or "your data" or "the data" as "[the data]".
