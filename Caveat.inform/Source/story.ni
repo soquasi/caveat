@@ -19,10 +19,22 @@ Rule for starting the virtual machine:
 	follow the current graphics drawing rule;
 	move USB flash drive to player.
 	
-Introduction is a room. "[line break][if unvisited][italic type]This is an interactive tutorial. You can type 'next' or 'n'' to advance to the next step in the tutorial. Type 'help' if you need further assistance.[line break][roman type][end if]You found it in a cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it up soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.".
+Introduction is a room. "[line break][if unvisited][italic type]This is an interactive tutorial. You can type 'next' or 'n' to advance to the next step in the tutorial. Type 'help' if you need further assistance. Type 'x thing' or 'examine thing' to examine a thing.[roman type][line break]You found it in the cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it up soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.[otherwise]Your steps produce a hollow echo, as if someone (or something?) was following you,"
+
 The flashlight is a device in introduction. it is scenery and switched on.
 Every turn when the flashlight is switched on:
-	now the flashlight is lit.
+	now the player is safe;
+	now the Introduction is lit.
+	
+A person can be safe or in danger. The player is safe.
+
+After switching off the flashlight:
+	A gruesome death occurs in five turns from now;
+	now the player is in danger.
+	
+At the time when a gruesome death occurs:
+	end the story saying "You have been eaten by a wandering grue".
+	
 	
 The usb flash drive is undescribed.
 
@@ -37,6 +49,9 @@ After going north from introduction for the first time:
 	try silently entering the chair;
 	continue the action.
 	
+After switching off the flashlight in introduction:
+	now Introduction is dark; continue the action.
+	
 Understand "lamp" or "light" or "torch" as the flashlight.
 	
 Chapter 2 - The Office
@@ -46,8 +61,9 @@ The USB flash drive is a thing. The description is "Its plastic part is teal blu
 
 The chair is an enterable supporter in the office. the description is "Almost too comfortable for working."
 
-The laptop is a thing in the office. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come.".
+The laptop is a device in the office. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come. It sports a couple of USB slots.".
 The USB slot is an open container and part of the laptop.
+The screen is part of the laptop.
 
 The stored data is nowhere. The printed name of the stored data is "data from the flash drive".
 
@@ -62,17 +78,36 @@ Does the player mean inserting the USB flash drive into the USB slot: it is very
 Does the player mean inserting into the USB slot: it is very likely.
 Does the player mean inserting into the USB flash drive: it is very unlikely.
 
-Before inserting the usb flash drive into the usb slot for the first time, say "Not doing this very thing is recommended practice and good common sense in normal circumstances. But you doubt that anybody would leave a corrupted, malware ridden data store in so inconspicuous a place as deep down in a cavernous cave. You throw caution to the winds this time." 
+Before inserting the usb flash drive into the usb slot for the first time, say "Not doing this very thing is recommended practice and good common sense in normal circumstances. But you doubt that anybody would leave a corrupted, malware ridden data store in so inconspicuous a place as deep down in a cavernous cave. You throw caution to the winds for once." 
 
 After inserting the usb flash drive into the usb slot for the first time:
 	say "Your laptop reads the data."
+	
+Examining the screen is being nosy. Examining the data is being nosy.
+Instead of being nosy, say "This is interesting. Your file manager shows two files on the flash drive:[line break]x_marks_the_spot.shp[line break]hidden_secret.csv."
 	
 
 Understand "slot" or "USB" or "USB slot" as the USB slot.
 Understand "USB" or "flash drive" or "flash storage" or "storage"  or "USB stick" or "drive" or "plug" or "gnawed/tattered/teal/blue" as the USB flash drive.
 Understand "computer" or "PC" or "your computer" or "my computer" or "your PC" or "my PC" or
  "your laptop" or "my laptop" as "[the laptop]".
+Understand "screen" or "monitor" as the screen.
+Understand  "plug [something] in [something]" as inserting it into.
 
+Chapter 3 - Commandlineaction
+
+Commandlineaction is a scene. Commandlineaction begins when being nosy.
+Commandlineaction ends when Commandlineaction is happening and the player's command includes "exit".
+[
+After reading a command during Commandlineaction:
+	repeat through the table of command topics:
+		if the player's command matches the befehl entry:
+			say response entry.
+
+Table 3.0 - command topics
+befehl	response
+"ll"	"--r --r x_marks_the_spot.shp[line break]--r --r hidden_secret.csv"]
+	
 Chapter 97 - Customized messages
 
 Instead of eating the usb flash drive, say "It is mangled enough as it is."
@@ -127,7 +162,7 @@ Report howtoasking:
 Table 2.0 - how-to-topics
 topic	helptext
 "store [the data]" or "upload [the data]" or "upload [the file]"	"Easy as pie: First, make sure your data is in a form the cli is able to understand. (You can convert them using the cli), then you type 'here xyz upload YOUR_SPACE_ID -f /path/to/your/data.csv' or 'here xyz upload YOUR_SPACE_ID -f /path/to/your/data.geojson' at the command prompt"
-"convert [the data]" or "convert [the file]" or "transform [the data]" or "transform [the file]"	"The command for converting data from a shapefile to JSON is 'here transform shp2geo filename.shp'"
+"convert [the data]" or "convert [the file]" or "transform [the data]" or "transform [the file]"	"The command for converting data from a shapefile to JSON is 'here transform shp2geo filename.shp'[line break] and the command to convert from csv to JSON is 'here transform csv2geo filename.shp'"
 
 [Understand "hub" or "xyz" as "[here xyz]." Instead of npcasking [here xyz], tr]
 Understand "help" as summoning help. Summoning help is an action applying to nothing. 
