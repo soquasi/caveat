@@ -4,3 +4,8 @@
 
 # Inform Skein file (threads followed in the game)
 *.skein
+*.ulx
+
+# Inform Release file and debug log
+Caveat.inform/Release.blurb
+Caveat.inform/Build/Debug log.txt
