@@ -34,7 +34,8 @@ Before of going north in Introduction:
 	follow the current graphics drawing rule.
 	
 After going north from introduction for the first time:
-	try silently entering the chair.
+	try silently entering the chair;
+	continue the action.
 	
 Understand "lamp" or "light" or "torch" as the flashlight.
 	
