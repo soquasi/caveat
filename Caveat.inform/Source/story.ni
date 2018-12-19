@@ -23,20 +23,24 @@ Introduction is a room. "[line break][if unvisited][italic type]This is an inter
 
 The flashlight is a device in introduction. it is scenery and switched on.
 Every turn when the flashlight is switched on:
-	now the player is safe;
+	now fearsomeness is 0;
 	now the Introduction is lit.
 	
-A person can be safe or in danger. The player is safe.
+After deciding the scope of the player when the location is the Introduction:
+	place the flashlight in scope.
 
-After switching off the flashlight:
-	A gruesome death occurs in five turns from now;
-	now the player is in danger.
+the fearsomeness is a number that varies. The fearsomeness is 0.
+
+Every turn when the introduction is dark and the player is in introduction:
+	increase the fearsomeness by 1;
+	if the fearsomeness is 5:
+		a gruesome death occurs in one turn from now.
 	
 At the time when a gruesome death occurs:
-	end the story saying "You have been eaten by a wandering grue".
+	if the introduction is dark:
+		end the story saying "You have been eaten by a wandering grue".
 	
-	
-The usb flash drive is undescribed.
+The usb flash drive is held by the player.
 
 Does the player mean switching on the flash drive: it is very unlikely.
 
