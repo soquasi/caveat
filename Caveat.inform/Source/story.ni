@@ -81,6 +81,15 @@ Does the player mean inserting the USB slot into: it is very unlikely.
 Does the player mean inserting the USB flash drive into the USB slot: it is very likely.
 Does the player mean inserting into the USB slot: it is very likely.
 Does the player mean inserting into the USB flash drive: it is very unlikely.
+Does the player mean reading the USB slot: it is very unlikely.
+Does the player mean reading the USB flash drive: it is likely.
+Does the player mean removing the USB slot from: it is very likely.
+
+The can't take off what's not worn rule is not listed in the check removing it from rulebook.
+
+
+Instead of reading the USB flash drive:
+	try inserting the noun into the USB slot.
 
 Before inserting the usb flash drive into the usb slot for the first time, say "Not doing this very thing is recommended practice and good common sense in normal circumstances. But you doubt that anybody would leave a corrupted, malware ridden data store in so inconspicuous a place as deep down in a cavernous cave. You throw caution to the winds for once." 
 
@@ -88,7 +97,7 @@ After inserting the usb flash drive into the usb slot for the first time:
 	say "Your laptop reads the data."
 	
 Examining the screen is being nosy. Examining the data is being nosy.
-Instead of being nosy, say "This is interesting. Your file manager shows two files on the flash drive:[line break]x_marks_the_spot.shp[line break]hidden_secret.csv."
+Instead of being nosy, say "[if being nosy for the first time]This is interesting. [end if]Your file manager shows two files[if being nosy for the first time] on the flash drive[end if]:[line break]x_marks_the_spot.shp[line break]hidden_secret.csv."
 	
 
 Understand "slot" or "USB" or "USB slot" as the USB slot.
@@ -97,6 +106,11 @@ Understand "computer" or "PC" or "your computer" or "my computer" or "your PC" o
  "your laptop" or "my laptop" as "[the laptop]".
 Understand "screen" or "monitor" as the screen.
 Understand  "plug [something] in [something]" as inserting it into.
+
+A file is a kind of thing. A file can be open. A file can be openable. A file is usually openable.
+x_marks_the_spot is a file in the office. Understand "x marks the spot" or " x marks" or "marks" or "spot" as x_marks_the_spot. The printed name is "x_marks_the_spot.shp".
+hidden_secret is a file in the office. Understand "hidden secret" or "hidden" or "secret" as hidden_secret. The printed name is "hidden_secret.csv".
+Files can be scenery. Files are usually scenery. 
 
 Chapter 3 - Commandlineaction
 
@@ -115,6 +129,7 @@ befehl	response
 Chapter 97 - Customized messages
 
 Instead of eating the usb flash drive, say "It is mangled enough as it is."
+Instead of listening when the player is in introduction, say "You stand still and listen. Somewhere water is dripping in a slow but steady pace. You resume breathing."
 
 Chapter 98 - Pictures
 
@@ -174,6 +189,26 @@ Report summoning help: say "To follow the tutorial, type 'next' or 'n'. You can 
 
 Understand "a file" or "my file" or "your file" or "the file" as "[the file]".
 Understand "data" or "my data" or "your data" or "the data" as "[the data]".
+
+Understand the command "read" as something new.
+Understand "read [something]" as reading. Reading is an action applying to one thing.
+
+This is the media requirement rule:
+	if the player is not carrying the USB flash drive or location is not the office, say "You do not have any media here."
+	
+Check reading:
+	if noun is not the USB flash drive and noun is not a file, say "What do you want to read?" instead.
+	
+Carry out reading:
+	if noun is the USB flash drive:
+		try inserting the noun into the USB slot instead;
+	otherwise if noun is a file:
+		try opening the noun instead.
+		
+Carry out removing it from:
+	if noun is the USB flash drive and the second noun is the USB slot:
+		say "You remove [the noun], carefully replacing it into your pocket.";
+		rule succeeds.
 
 Release along with an interpreter.
 
