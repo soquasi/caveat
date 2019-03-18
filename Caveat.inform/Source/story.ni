@@ -19,7 +19,10 @@ Rule for starting the virtual machine:
 	follow the current graphics drawing rule;
 	move USB flash drive to player.
 	
-Introduction is a room. "[line break][if unvisited][italic type]This is an interactive tutorial. You can type 'next' or 'n' to advance to the next step in the tutorial. Type 'help' if you need further assistance. Type 'x thing' or 'examine thing' to examine a thing.[roman type][line break]You found it in the cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it up soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.[otherwise]Your steps produce a hollow echo, as if someone (or something?) was following you,"
+Introduction is a room. "[line break][if unvisited][italic type]This is an interactive tutorial. You can type 'next' or 'n' to advance to the next step in the tutorial. Type 'help' if you need further assistance. Type 'x thing' or 'examine thing' to examine a thing.[roman type][line break]You found it in the cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it up soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.[otherwise]Your steps produce a hollow echo, as if someone (or something?) was following you."
+
+The cave is a backdrop in introduction. The description is "[if unvisited]The rock faces surround you, catching the light of your torch in their shiny surface, yet dry to the touch.[otherwise]The rock faces surround you." 
+Understand "cave" and "cavern" and "hall" and "darkness" as the cave.
 
 The flashlight is a device in introduction. it is scenery and switched on.
 Every turn when the flashlight is switched on:
@@ -96,6 +99,10 @@ Before inserting the usb flash drive into the usb slot for the first time, say "
 After inserting the usb flash drive into the usb slot for the first time:
 	say "Your laptop reads the data."
 	
+Before inserting the usb flash drive into the usb slot when the laptop is switched off: 
+	try switching on the laptop; 
+	continue the action.
+
 Examining the screen is being nosy. Examining the data is being nosy.
 Instead of being nosy, say "[if being nosy for the first time]This is interesting. [end if]Your file manager shows two files[if being nosy for the first time] on the flash drive[end if]:[line break]x_marks_the_spot.shp[line break]hidden_secret.csv."
 	
