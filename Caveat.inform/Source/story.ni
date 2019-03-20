@@ -21,7 +21,7 @@ Rule for starting the virtual machine:
 	
 Introduction is a room. "[line break][if unvisited][italic type]This is an interactive tutorial. You can type 'next' or 'n' to advance to the next step in the tutorial. Type 'help' if you need further assistance. Type 'x thing' or 'examine thing' to examine a thing.[roman type][line break]You found it in the cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it up soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.[otherwise]Your steps produce a hollow echo, as if someone (or something?) was following you."
 
-The cave is a backdrop in introduction. The description is "[if unvisited]The rock faces surround you, catching the light of your torch in their shiny surface, yet dry to the touch.[otherwise]The rock faces surround you." 
+The cave is a backdrop in introduction. The description is "The rock faces surround you[if location is lit], catching the light of your torch in their shiny surface, yet[end if] dry to the touch..[first time] The natural dome is too high for you to feel claustrophobic[only]." 
 Understand "cave" and "cavern" and "hall" and "darkness" as the cave.
 
 The flashlight is a device in introduction. it is scenery and switched on.
@@ -37,6 +37,7 @@ the fearsomeness is a number that varies. The fearsomeness is 0.
 Every turn when the introduction is dark and the player is in introduction:
 	increase the fearsomeness by 1;
 	if the fearsomeness is 5:
+		say "You'd better switch on the light.";
 		a gruesome death occurs in one turn from now.
 	
 At the time when a gruesome death occurs:
@@ -68,7 +69,7 @@ The USB flash drive is a thing. The description is "Its plastic part is teal blu
 
 The chair is an enterable supporter in the office. the description is "Almost too comfortable for working."
 
-The laptop is a device in the office. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come. It sports a couple of USB slots.".
+The laptop is a device in the office. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come. It features a couple of USB slots.".
 The USB slot is an open container and part of the laptop.
 The screen is part of the laptop.
 
@@ -87,6 +88,8 @@ Does the player mean inserting into the USB flash drive: it is very unlikely.
 Does the player mean reading the USB slot: it is very unlikely.
 Does the player mean reading the USB flash drive: it is likely.
 Does the player mean removing the USB slot from: it is very likely.
+Does the player mean switching off the USB flash drive in introduction: it is very unlikely.
+Does the player mean switching on the USB flash drive in introduction: it is very unlikely.
 
 The can't take off what's not worn rule is not listed in the check removing it from rulebook.
 
@@ -94,7 +97,7 @@ The can't take off what's not worn rule is not listed in the check removing it f
 Instead of reading the USB flash drive:
 	try inserting the noun into the USB slot.
 
-Before inserting the usb flash drive into the usb slot for the first time, say "Not doing this very thing is recommended practice and good common sense in normal circumstances. But you doubt that anybody would leave a corrupted, malware ridden data store in so inconspicuous a place as deep down in a cavernous cave. You throw caution to the winds for once." 
+Before inserting the usb flash drive into the usb slot for the first time, say "Not doing this very thing is recommended practice and good common sense in normal circumstances. But you doubt that anybody would leave a corrupted, malware ridden data store in so inconspicuous a place as deep down in a cave. You throw caution to the winds for once." 
 
 After inserting the usb flash drive into the usb slot for the first time:
 	say "Your laptop reads the data."
@@ -105,6 +108,8 @@ Before inserting the usb flash drive into the usb slot when the laptop is switch
 
 Examining the screen is being nosy. Examining the data is being nosy.
 Instead of being nosy, say "[if being nosy for the first time]This is interesting. [end if]Your file manager shows two files[if being nosy for the first time] on the flash drive[end if]:[line break]x_marks_the_spot.shp[line break]hidden_secret.csv."
+
+Instead of going south from the office, say "You think about going back to the cave, but you decide that the flash drive was probably the single most valuable item you could retrieve from there."
 	
 
 Understand "slot" or "USB" or "USB slot" as the USB slot.
@@ -163,6 +168,7 @@ Report casting xyzzy: say "If creating maps was that easy, there would be no nee
 
 Npcasking  is an action applying to one topic.
 Understand "what is [text]" as npcasking.
+Understand "what are [text]" as npcasking.
 Check npcasking:
 	if the topic understood is not a topic listed in the table of asked topics, say "I do not know anything about [the topic understood] either."
 Report npcasking:
@@ -175,6 +181,8 @@ topic	helptext
 "npm"	"It is the default package manager for the Node.js runtime environment."
 "here"	"The HERE CLI is the tool you are going to learn about. It's really useful for creating and filling xyz spaces"
 "javascript"	"Javascript is a high-level interpreted programming language. It is widely used serverside and clientside on web applications and web pages."
+"[the creds]"	"Your HERE Credentials. You register for an XYZ account on xyz.here.com/studio and can use the HERE CLI with the e-mail and password you used there."
+[keywords yet TODO: "xyz account","space(s)" or "xyz space(s)"]
 
 Instead of telling yourself about the topic understood, try npcasking the topic understood.
 
@@ -187,8 +195,11 @@ Report howtoasking:
 
 Table 2.0 - how-to-topics
 topic	helptext
-"store [the data]" or "upload [the data]" or "upload [the file]"	"Easy as pie: First, make sure your data is in a form the cli is able to understand. (You can convert them using the cli), then you type 'here xyz upload YOUR_SPACE_ID -f /path/to/your/data.csv' or 'here xyz upload YOUR_SPACE_ID -f /path/to/your/data.geojson' at the command prompt"
+"store [the data]" or "upload [the data]" or "upload [the file]" or "load [the data]" or "load [the file]"	"Easy as pie: First, make sure your data is in a form the cli is able to understand. (You can convert them using the cli), then you type 'here xyz upload YOUR_SPACE_ID -f /path/to/your/data.csv' or 'here xyz upload YOUR_SPACE_ID -f /path/to/your/data.geojson' at the command prompt"
 "convert [the data]" or "convert [the file]" or "transform [the data]" or "transform [the file]"	"The command for converting data from a shapefile to JSON is 'here transform shp2geo filename.shp'[line break] and the command to convert from csv to JSON is 'here transform csv2geo filename.shp'"
+"enter [the creds]" or "log in"	"In the CLI you log in by typing 'here configure account'. You will be prompted for your e-mail address and password. Your password will not be shown, of course."
+"verify [the creds]"	"Once you have put in your credentials, you can use the command 'here configure verify' to ensure your credentials can be used to interact with the HERE API."
+"list [the spaces]" or "list [the data]" or "see [the data]"	"Use the command 'here xyz list' to list the spaces that you have access to. These are not only the spaces you have created but also the spaces that have been made accessible to anyone."
 
 [Understand "hub" or "xyz" as "[here xyz]." Instead of npcasking [here xyz], tr]
 Understand "help" as summoning help. Summoning help is an action applying to nothing. 
@@ -196,6 +207,8 @@ Report summoning help: say "To follow the tutorial, type 'next' or 'n'. You can 
 
 Understand "a file" or "my file" or "your file" or "the file" as "[the file]".
 Understand "data" or "my data" or "your data" or "the data" as "[the data]".
+Understand "credentials" or "my credentials" or "the credentials" or "here credentials" as "[the creds]".
+Understand "spaces" or "my spaces" or "the spaces" or "xyz spaces" as "[the spaces]".
 
 Understand the command "read" as something new.
 Understand "read [something]" as reading. Reading is an action applying to one thing.
