@@ -90,6 +90,7 @@ Does the player mean reading the USB flash drive: it is likely.
 Does the player mean removing the USB slot from: it is very likely.
 Does the player mean switching off the USB flash drive in introduction: it is very unlikely.
 Does the player mean switching on the USB flash drive in introduction: it is very unlikely.
+Does the player mean doing anything other than inserting or removing or reading to the USB flash drive: It is very unlikely.
 
 The can't take off what's not worn rule is not listed in the check removing it from rulebook.
 
@@ -128,16 +129,44 @@ Chapter 3 - Commandlineaction
 
 Commandlineaction is a scene. Commandlineaction begins when being nosy.
 Commandlineaction ends when Commandlineaction is happening and the player's command includes "exit".
-[
+
 After reading a command during Commandlineaction:
 	repeat through the table of command topics:
-		if the player's command matches the befehl entry:
-			say response entry.
+		if the player's command matches the topic entry:
+			say "[response entry] [line break]";
+			stop the action.
+		
 
 Table 3.0 - command topics
-befehl	response
-"ll"	"--r --r x_marks_the_spot.shp[line break]--r --r hidden_secret.csv"]
+topic	response
+"ll"	"--r --r x_marks_the_spot.shp[line break]--r --r hidden_secret.csv"
+"ls"	"x_marks_the_spot.shp	hidden_secret.csv"
+"[xyz] -h" or "[xyz] --help"	"Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
+Options:[line break]
+     -V, --version        output the version number[line break]
+     -h, --help             output usage information[paragraph break]
+Commands:[line break]
+        list|ls [bracket]options[close bracket]                 information about available xyz spaces[line break]
+        describe [bracket]options[close bracket] <id>  gives the summary details of the given space [bracket]id[close bracket][line break]
+        analyze [bracket]options[close bracket] <id>   property based analysis of the content of the given [bracket]id[close bracket][line break]
+        show [bracket]options[close bracket] <id>       shows the content of the given [bracket]id[close bracket][line break]
+        delete <id>                     delete the xyzspace with the given id[line break]
+        create [bracket]options[close bracket]               create a new xyzspace[line break]
+        clear [bracket]options[close bracket] <id>        clear data from xyz space[line break]
+        token                                list all xyz token[line break]
+        upload [bracket]options[close bracket] <id>    upload a local geojson file to the given id"
+"[xyz] list" or "[xyz] ls"	"[list of spaces]"
+
+Table 4.0 - spaces
+id	space
+0	"Nothing to show"
+
+To say list of spaces:
+	choose a random row in the table of spaces;
+	say "[space entry]".
 	
+Understand "here xyz" as "[xyz]".	
+
 Chapter 97 - Customized messages
 
 Instead of eating the usb flash drive, say "It is mangled enough as it is."
