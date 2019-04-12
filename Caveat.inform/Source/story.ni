@@ -16,6 +16,7 @@ Rule for starting the virtual machine:
 	now the current graphics drawing rule is the centered scaled drawing rule;
 	blank window to "$000000";
 	now the currently shown picture is the figure of the cave;
+	now the time of day is 4:00 PM;
 	follow the current graphics drawing rule;
 	move USB flash drive to player.
 	
@@ -69,7 +70,7 @@ The USB flash drive is a thing. The description is "Its plastic part is teal blu
 
 The chair is an enterable supporter in the office. the description is "Almost too comfortable for working."
 
-The laptop is a device in the office. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come. It features a couple of USB slots.".
+The laptop is a device in the office. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come. It features a couple of USB slots.". Understand "computer" as the laptop.
 The USB slot is an open container and part of the laptop.
 The screen is part of the laptop.
 
@@ -115,14 +116,13 @@ Instead of going south from the office, say "You think about going back to the c
 
 Understand "slot" or "USB" or "USB slot" as the USB slot.
 Understand "USB" or "flash drive" or "flash storage" or "storage"  or "USB stick" or "drive" or "plug" or "gnawed/tattered/teal/blue" as the USB flash drive.
-Understand "computer" or "PC" or "your computer" or "my computer" or "your PC" or "my PC" or
- "your laptop" or "my laptop" as "[the laptop]".
+Understand "computer" or "PC" or "your computer" or "my computer" or "your PC" or "my PC" or "laptop" or "your laptop" or "my laptop" as "[the laptop]".
 Understand "screen" or "monitor" as the screen.
 Understand  "plug [something] in [something]" as inserting it into.
 
 A file is a kind of thing. A file can be open. A file can be openable. A file is usually openable.
-x_marks_the_spot is a file in the office. Understand "x marks the spot" or " x marks" or "marks" or "spot" as x_marks_the_spot. The printed name is "x_marks_the_spot.shp".
-hidden_secret is a file in the office. Understand "hidden secret" or "hidden" or "secret" as hidden_secret. The printed name is "hidden_secret.csv".
+x_marks_the_spot is a file in the office. Understand "x marks the spot" or " x marks" or "marks" or "spot" or "shapefile" or "shape file" as x_marks_the_spot. The printed name is "x_marks_the_spot.shp".
+hidden_secret is a file in the office. Understand "hidden secret" or "hidden" or "secret" or "comma delimited" or "comma delimited file" as hidden_secret. The printed name is "hidden_secret.csv".
 Files can be scenery. Files are usually scenery. 
 
 Chapter 3 - Commandlineaction
@@ -136,36 +136,73 @@ After reading a command during Commandlineaction:
 			say "[response entry] [line break]";
 			stop the action.
 		
-
 Table 3.0 - command topics
 topic	response
 "ll"	"--r --r x_marks_the_spot.shp[line break]--r --r hidden_secret.csv"
-"ls"	"x_marks_the_spot.shp	hidden_secret.csv"
-"[xyz] -h" or "[xyz] --help"	"Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
-Options:[line break]
-     -V, --version        output the version number[line break]
-     -h, --help             output usage information[paragraph break]
-Commands:[line break]
-        list|ls [bracket]options[close bracket]                 information about available xyz spaces[line break]
-        describe [bracket]options[close bracket] <id>  gives the summary details of the given space [bracket]id[close bracket][line break]
-        analyze [bracket]options[close bracket] <id>   property based analysis of the content of the given [bracket]id[close bracket][line break]
-        show [bracket]options[close bracket] <id>       shows the content of the given [bracket]id[close bracket][line break]
-        delete <id>                     delete the xyzspace with the given id[line break]
-        create [bracket]options[close bracket]               create a new xyzspace[line break]
-        clear [bracket]options[close bracket] <id>        clear data from xyz space[line break]
-        token                                list all xyz token[line break]
-        upload [bracket]options[close bracket] <id>    upload a local geojson file to the given id"
+"ls" or "dir"	"x_marks_the_spot.shp	hidden_secret.csv"
+"[xyz] -h" or "[xyz] --help"	"[global help]"
 "[xyz] list" or "[xyz] ls"	"[list of spaces]"
+"[xyz] -V" or "[xyz] --version"	"0.23.42"
+"[xyz] describe x7y9z63"	"[describe space]"
+"[trans] -h" or "[trans] --help"	"[help transform]"
 
 Table 4.0 - spaces
 id	space
-0	"Nothing to show"
+"0"	"Nothing to show"
+"x7y9z63"	"Id         Title                 Description[line break]
+-----------------------------------------------[line break]
+x7y9z63
+"
 
 To say list of spaces:
 	choose a random row in the table of spaces;
 	say "[space entry]".
-	
-Understand "here xyz" as "[xyz]".	
+
+To say global help:
+	say	"Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
+Options:[line break]
+	 -V, --version        output the version number[line break]
+	 -h, --help             output usage information[paragraph break]
+Commands:[line break]
+		list|ls [bracket]options[close bracket]                 information about available xyz spaces[line break]
+		describe [bracket]options[close bracket] <id>  gives the summary details of the given space [bracket]id[close bracket][line break]
+		analyze [bracket]options[close bracket] <id>   property based analysis of the content of the given [bracket]id[close bracket][line break]
+		show [bracket]options[close bracket] <id>       shows the content of the given [bracket]id[close bracket][line break]
+		delete <id>                     delete the xyzspace with the given id[line break]
+		create [bracket]options[close bracket]               create a new xyzspace[line break]
+		clear [bracket]options[close bracket] <id>        clear data from xyz space[line break]
+		token                                list all xyz token[line break]
+		upload [bracket]options[close bracket] <id>    upload a local geojson file to the given id".
+		
+To say help transform:
+	say "Usage:   [bracket]options[close bracket] [bracket]command[close bracket]
+
+Options:[line break]
+	 -V, --version              output the version number[line break]
+	 -h, --help                   output usage information
+
+Commands:[line break]
+   csv2geo [bracket]options[close bracket] <path>  convert csv to geojson
+
+
+Features created from [time of day] to [time of day][line break]Features updated from [time of day] to [time of day]".
+		
+To say describe space:
+	say "=============================================[line break]
+											Summary for Space x7y9z63[line break]
+=============================================[line break]
+Total xx features[line break]
+GeometryType  Count[line break]
+----------------  -------[line break]
+Point(?)              xx
+
+Total unique tag Count: y[line break]
+Unique tag list : [bracket][quotation mark]zzz[quotation mark][close bracket][line break]
+TagName            Count[line break]
+----------------   --------[line break]
+zzz                       a".
+
+Understand "here xyz" as "[xyz]".	Understand "here transform" as "[trans]".
 
 Chapter 97 - Customized messages
 
