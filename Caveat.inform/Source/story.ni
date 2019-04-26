@@ -127,20 +127,28 @@ Files can be scenery. Files are usually scenery.
 
 Chapter 3 - Commandlineaction
 
-Commandlineaction is a scene. Commandlineaction begins when being nosy.
+Commandlineaction is a recurring scene. Commandlineaction begins when being nosy.
 Commandlineaction ends when Commandlineaction is happening and the player's command includes "exit".
+When commandlineaction begins: now the command prompt is "root@wintermute:/data$ ".
+When commandlineaction ends: now the command prompt is ">".
 
 After reading a command during Commandlineaction:
 	repeat through the table of command topics:
 		if the player's command matches the topic entry:
 			say "[response entry] [line break]";
 			stop the action.
+
+Instead of exiting during Commandlineaction:
+	say "You leave the command shell.";
+	try looking.
 		
 Table 3.0 - command topics
 topic	response
 "ll"	"--r --r x_marks_the_spot.shp[line break]--r --r hidden_secret.csv"
 "ls" or "dir"	"x_marks_the_spot.shp	hidden_secret.csv"
-"[xyz] -h" or "[xyz] --help"	"[global help]"
+"pwd"	"\data"
+"[here]" or "[here] -h" or "[here] --help"	"[global help]"
+"[xyz] -h" or "[xyz] --help"	"[xyz help]"
 "[xyz] list" or "[xyz] ls"	"[list of spaces]"
 "[xyz] -V" or "[xyz] --version"	"0.23.42"
 "[xyz] describe x7y9z63"	"[describe space]"
@@ -158,12 +166,39 @@ To say list of spaces:
 	choose a random row in the table of spaces;
 	say "[space entry]".
 
+Rule for printing a parser error when the latest parser error is the not a verb I recognise error:
+	if commandlineaction is happening:
+		let P be "[the player's command]";
+		if P matches the regular expression "^here xyz":
+			replace the regular expression "^(here xyz )(\w)" in P with "\2";
+			change the text of the player's command to P;
+			say "Unknown command: [P][line break][xyz help]" instead;
+		else if P matches the regular expression "^[here]":
+			replace the regular expression "^(here)(.*)" in P with "\2";
+			change the text of the player's command to P;
+			say "Unknown command: [player's command][line break][global help]" instead;
+		else:
+			say "sh: [player's command]: command not found[line break]" instead.
+
 To say global help:
+	say "Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
+Options:[line break]
+	 -V, --version        output the version number[line break]
+	 -h, --help             output usage information[paragraph break]
+Commands:[paragraph break]
+	configure|c [bracket]set|verify[close bracket]                   setup configuration for authentication[line break]
+	xyz|xs [bracket]list|create|upload[close bracket]              work with xyz spaces[line break]
+	transform|tf [bracket]csv2geo|shp2geo[close bracket]   convert from csv/shapefile to geojson[line break]
+	geocode|gc                                 geocode feature[line break]
+	help [bracket]cmd[close bracket]                                     display help for [bracket]cmd[close bracket]
+"
+
+To say xyz help:
 	say	"Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
 Options:[line break]
 	 -V, --version        output the version number[line break]
 	 -h, --help             output usage information[paragraph break]
-Commands:[line break]
+Commands:[paragraph break]
 		list|ls [bracket]options[close bracket]                 information about available xyz spaces[line break]
 		describe [bracket]options[close bracket] <id>  gives the summary details of the given space [bracket]id[close bracket][line break]
 		analyze [bracket]options[close bracket] <id>   property based analysis of the content of the given [bracket]id[close bracket][line break]
@@ -202,7 +237,7 @@ TagName            Count[line break]
 ----------------   --------[line break]
 zzz                       a".
 
-Understand "here xyz" as "[xyz]".	Understand "here transform" as "[trans]".
+Understand "here" as "[here]". Understand "here xyz" as "[xyz]".	Understand "here transform" as "[trans]".
 
 Chapter 97 - Customized messages
 
