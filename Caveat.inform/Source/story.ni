@@ -4,6 +4,7 @@ Include Simple Graphical Window by Emily Short.
 Include Basic Screen Effects by Emily Short.
 Include Glulx Entry Points by Emily Short.
 Include Punctuation Removal by Emily Short.
+Include Glulx Text Effects by Emily Short.
 
 The story headline is "An Interactive Tutorial for HERE XYZ".
 The story genre is "Other".
@@ -109,7 +110,8 @@ Before inserting the usb flash drive into the usb slot when the laptop is switch
 	continue the action.
 
 Examining the screen is being nosy. Examining the data is being nosy.
-Instead of being nosy, say "[if being nosy for the first time]This is interesting. [end if]Your file manager shows two files[if being nosy for the first time] on the flash drive[end if]:[line break]x_marks_the_spot.shp[line break]hidden_secret.csv."
+Instead of being nosy, say "[if being nosy for the first time]This is interesting. [end if]Your file manager shows two files[if being nosy for the first time] on the flash drive[end if]:[line break]x_marks_the_spot.shp[line break]hidden_secret.csv.[paragraph break]
+You copy both files to your computer and open a terminal window."
 
 Instead of going south from the office, say "You think about going back to the cave, but you decide that the flash drive was probably the single most valuable item you could retrieve from there."
 	
@@ -121,7 +123,7 @@ Understand "screen" or "monitor" as the screen.
 Understand  "plug [something] in [something]" as inserting it into.
 
 A file is a kind of thing. A file can be open. A file can be openable. A file is usually openable.
-x_marks_the_spot is a file in the office. Understand "x marks the spot" or " x marks" or "marks" or "spot" or "shapefile" or "shape file" as x_marks_the_spot. The printed name is "x_marks_the_spot.shp".
+x_marks_the_spot is a file in the office. Understand "x marks the spot" or " x marks" or "marks" or "spot" or "shapefile" or "shape file" as x_marks_the_spot. The printed name is "x_marks_the_spot.shp". Understand "x_marks_the_spot" or "x_marks_the_spotshp" as "[the shapefile]".
 hidden_secret is a file in the office. Understand "hidden secret" or "hidden" or "secret" or "comma delimited" or "comma delimited file" as hidden_secret. The printed name is "hidden_secret.csv".
 Files can be scenery. Files are usually scenery. 
 
@@ -129,8 +131,8 @@ Chapter 3 - Commandlineaction
 
 Commandlineaction is a recurring scene. Commandlineaction begins when being nosy.
 Commandlineaction ends when Commandlineaction is happening and the player's command includes "exit".
-When commandlineaction begins: now the command prompt is "root@wintermute:/data$ ".
-When commandlineaction ends: now the command prompt is ">".
+When commandlineaction begins: now the command prompt is "[fixed letter spacing]root@wintermute:/data$ ".
+When commandlineaction ends: now the command prompt is "[roman type]>".
 
 After reading a command during Commandlineaction:
 	repeat through the table of command topics:
@@ -144,23 +146,29 @@ Instead of exiting during Commandlineaction:
 		
 Table 3.0 - command topics
 topic	response
-"ll"	"--r --r x_marks_the_spot.shp[line break]--r --r hidden_secret.csv"
-"ls" or "dir"	"x_marks_the_spot.shp	hidden_secret.csv"
-"pwd"	"\data"
+"ll"	"[fixed letter spacing]--r --r x_marks_the_spot.shp[line break]--r --r hidden_secret.csv"
+"ls" or "dir"	"[fixed letter spacing]x_marks_the_spot.shp	hidden_secret.csv"
+"pwd"	"[fixed letter spacing]/data"
+"vi [the shapefile]" or "emacs [the shapefile]" or "vim [the shapefile]"	"[roman type]You decide against opening a shape file in an editor"
 "[here]" or "[here] -h" or "[here] --help"	"[global help]"
+"[xyz]"	"[fixed letter spacing]Invalid Command: 'undefined'[line break][xyz help]"
 "[xyz] -h" or "[xyz] --help"	"[xyz help]"
 "[xyz] list" or "[xyz] ls"	"[list of spaces]"
-"[xyz] -V" or "[xyz] --version"	"0.23.42"
+"[xyz] -V" or "[xyz] --version" or "[here] -V" or "[here] --version"	"[fixed letter spacing]0.23.42"
 "[xyz] describe x7y9z63"	"[describe space]"
 "[trans] -h" or "[trans] --help"	"[help transform]"
 
 Table 4.0 - spaces
 id	space
-"0"	"Nothing to show"
-"x7y9z63"	"Id         Title                 Description[line break]
+"0"	"[fixed letter spacing]Nothing to show"
+"x7y9z63"	"[fixed letter spacing] Id         Title                 Description[line break]
 -----------------------------------------------[line break]
 x7y9z63
 "
+
+Table of User Styles (continued)
+style name	fixed width	indentation
+special-style-1	true	8
 
 To say list of spaces:
 	choose a random row in the table of spaces;
@@ -172,53 +180,50 @@ Rule for printing a parser error when the latest parser error is the not a verb 
 		if P matches the regular expression "^here xyz":
 			replace the regular expression "^(here xyz )(\w)" in P with "\2";
 			change the text of the player's command to P;
-			say "Unknown command: [P][line break][xyz help]" instead;
+			say "[fixed letter spacing]Unknown command: [P][line break][xyz help]" instead;
 		else if P matches the regular expression "^[here]":
 			replace the regular expression "^(here)(.*)" in P with "\2";
 			change the text of the player's command to P;
-			say "Unknown command: [player's command][line break][global help]" instead;
+			say "[fixed letter spacing]Unknown command: [player's command][line break][global help]" instead;
 		else:
-			say "sh: [player's command]: command not found[line break]" instead.
+			say "[fixed letter spacing]sh: [player's command]: command not found[line break]" instead.
 
 To say global help:
-	say "Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
+	say "[fixed letter spacing]Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
 Options:[line break]
-	 -V, --version        output the version number[line break]
-	 -h, --help             output usage information[paragraph break]
-Commands:[paragraph break]
-	configure|c [bracket]set|verify[close bracket]                   setup configuration for authentication[line break]
-	xyz|xs [bracket]list|create|upload[close bracket]              work with xyz spaces[line break]
-	transform|tf [bracket]csv2geo|shp2geo[close bracket]   convert from csv/shapefile to geojson[line break]
-	geocode|gc                                 geocode feature[line break]
-	help [bracket]cmd[close bracket]                                     display help for [bracket]cmd[close bracket]
+	 [special-style-1]-V, --version                   output the version number[line break]
+	 -h, --help                      output usage information[paragraph break]";
+say "[fixed letter spacing]Commands:[paragraph break]
+	[special-style-1]configure|c [bracket]set|verify[close bracket]        setup configuration for authentication[line break]
+	xyz|xs [bracket]list|create|upload[close bracket]     work with xyz spaces[line break]
+	transform|tf [bracket]csv2geo|shp2geo[close bracket]  convert from csv/shapefile to geojson[line break]
+	geocode|gc                      geocode feature[line break]
+	help [bracket]cmd[close bracket]                      display help for [bracket]cmd[close bracket]
 "
 
 To say xyz help:
-	say	"Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
+	say	"[fixed letter spacing]Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
 Options:[line break]
-	 -V, --version        output the version number[line break]
-	 -h, --help             output usage information[paragraph break]
-Commands:[paragraph break]
-		list|ls [bracket]options[close bracket]                 information about available xyz spaces[line break]
+	 [special-style-1]-V, --version            output the version number[line break]
+	 -h, --help               output usage information[paragraph break]";
+say "[fixed letter spacing]Commands:[paragraph break]
+		[special-style-1]list|ls [bracket]options[close bracket]        information about available xyz spaces[line break]
 		describe [bracket]options[close bracket] <id>  gives the summary details of the given space [bracket]id[close bracket][line break]
 		analyze [bracket]options[close bracket] <id>   property based analysis of the content of the given [bracket]id[close bracket][line break]
-		show [bracket]options[close bracket] <id>       shows the content of the given [bracket]id[close bracket][line break]
-		delete <id>                     delete the xyzspace with the given id[line break]
-		create [bracket]options[close bracket]               create a new xyzspace[line break]
-		clear [bracket]options[close bracket] <id>        clear data from xyz space[line break]
-		token                                list all xyz token[line break]
+		show [bracket]options[close bracket] <id>      shows the content of the given [bracket]id[close bracket][line break]
+		delete <id>              delete the xyzspace with the given id[line break]
+		create [bracket]options[close bracket]         create a new xyzspace[line break]
+		clear [bracket]options[close bracket] <id>     clear data from xyz space[line break]
+		token                    list all xyz token[line break]
 		upload [bracket]options[close bracket] <id>    upload a local geojson file to the given id".
 		
 To say help transform:
-	say "Usage:   [bracket]options[close bracket] [bracket]command[close bracket]
-
+	say "[fixed letter spacing]Usage:   [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
 Options:[line break]
-	 -V, --version              output the version number[line break]
-	 -h, --help                   output usage information
-
-Commands:[line break]
-   csv2geo [bracket]options[close bracket] <path>  convert csv to geojson
-
+	 [special-style-1]-V, --version              output the version number[line break]
+	 -h, --help                   output usage information";
+	say "[fixed letter spacing]Commands:[line break]
+   [special-style-1]csv2geo [bracket]options[close bracket] <path>  convert csv to geojson
 
 Features created from [time of day] to [time of day][line break]Features updated from [time of day] to [time of day]".
 		
