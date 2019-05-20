@@ -24,7 +24,7 @@ Rule for starting the virtual machine:
 Introduction is a room. "[line break][if unvisited][italic type]This is an interactive tutorial. You can type 'next' or 'n' to advance to the next step in the tutorial. Type 'help' if you need further assistance. Type 'x thing' or 'examine thing' to examine a thing.[roman type][line break]You found it in the cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it up soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.[otherwise]Your steps produce a hollow echo, as if someone (or something?) was following you."
 
 The cave is a backdrop in introduction. The description is "The rock faces surround you[if location is lit], catching the light of your torch in their shiny surface, yet[end if] dry to the touch..[first time] The natural dome is too high for you to feel claustrophobic[only]." 
-Understand "cave" and "cavern" and "hall" and "darkness" as the cave.
+Understand "cave" or "cavern" or "hall" or "darkness" or "dome" as the cave.
 
 The flashlight is a device in introduction. it is scenery and switched on.
 Every turn when the flashlight is switched on:
@@ -34,7 +34,7 @@ Every turn when the flashlight is switched on:
 After deciding the scope of the player when the location is the Introduction:
 	place the flashlight in scope.
 
-the fearsomeness is a number that varies. The fearsomeness is 0.
+The fearsomeness is a number that varies. The fearsomeness is 0.
 
 Every turn when the introduction is dark and the player is in introduction:
 	increase the fearsomeness by 1;
@@ -52,7 +52,7 @@ Does the player mean switching on the flash drive: it is very unlikely.
 
 Before of going north in Introduction: 
 	blank window to "$ffffff";
-	now the currently shown picture is the figure of the newt;
+	now the currently shown picture is the figure of the office;
 	follow the current graphics drawing rule.
 	
 After going north from introduction for the first time:
@@ -70,10 +70,27 @@ The Office is north of the introduction. "[line break][if unvisited]Now y[otherw
 The USB flash drive is a thing. The description is "Its plastic part is teal blue, rough around the edges and you can see the marks of small teeth on it." The printed name of the USB flash drive is "flash drive".
 
 The chair is an enterable supporter in the office. the description is "Almost too comfortable for working."
+The desk is a supporter in the office. It is undescribed. The laptop is on the desk. Understand "desk" or "wooden" or "wood" as the desk.
+The glass is on the desk. Understand "water" as the glass.
+The glass is either full or empty. The glass is full. The glass is undescribed.
+Instead of drinking the glass when the glass is empty:
+	say "There is no water left."
+Instead of drinking the glass when the glass is full:
+	now the glass is empty;
+	say "That's  just what you needed now".
+	
+After printing the name of the glass:
+	if the glass is full:
+		say " (full)";
+	otherwise:
+		say " (empty)".
 
-The laptop is a device in the office. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come. It features a couple of USB slots.". Understand "computer" as the laptop.
+The laptop is a device. It is on the desk. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come. It features a couple of USB slots.". Understand "computer" as the laptop.
 The USB slot is an open container and part of the laptop.
 The screen is part of the laptop.
+
+Does the player mean switching on the chair: it is very unlikely.
+Does the player mean switching on the laptop: it is very likely.
 
 The stored data is nowhere. The printed name of the stored data is "data from the flash drive".
 
@@ -117,14 +134,14 @@ Instead of going south from the office, say "You think about going back to the c
 	
 
 Understand "slot" or "USB" or "USB slot" as the USB slot.
-Understand "USB" or "flash drive" or "flash storage" or "storage"  or "USB stick" or "drive" or "plug" or "gnawed/tattered/teal/blue" as the USB flash drive.
+Understand "USB" or "flash drive" or "flash storage" or "storage"  or "USB stick" or "drive" or "plug" or "gnawed/tattered/teal/blue" or "tooth marks" or "teeth marks" as the USB flash drive.
 Understand "computer" or "PC" or "your computer" or "my computer" or "your PC" or "my PC" or "laptop" or "your laptop" or "my laptop" as "[the laptop]".
 Understand "screen" or "monitor" as the screen.
 Understand  "plug [something] in [something]" as inserting it into.
 
 A file is a kind of thing. A file can be open. A file can be openable. A file is usually openable.
-x_marks_the_spot is a file in the office. Understand "x marks the spot" or " x marks" or "marks" or "spot" or "shapefile" or "shape file" as x_marks_the_spot. The printed name is "x_marks_the_spot.shp". Understand "x_marks_the_spot" or "x_marks_the_spotshp" as "[the shapefile]".
-hidden_secret is a file in the office. Understand "hidden secret" or "hidden" or "secret" or "comma delimited" or "comma delimited file" as hidden_secret. The printed name is "hidden_secret.csv".
+Understand "x marks the spot" or " x marks" or "marks" or "spot" or "shapefile" or "shape file" or "* shp" or "x_marks_the_spot shp" as "[shapefile]". The printed name is "x_marks_the_spot.shp".
+hidden_secret is a file in the office. Understand "hidden secret" or "hidden" or "secret" or "comma delimited" or "comma delimited file" or "* csv" or "hidden_secret csv" as "[csvfile]". The printed name is "hidden_secret.csv".
 Files can be scenery. Files are usually scenery. 
 
 Chapter 3 - Commandlineaction
@@ -135,9 +152,10 @@ When commandlineaction begins: now the command prompt is "[fixed letter spacing]
 When commandlineaction ends: now the command prompt is "[roman type]>".
 
 After reading a command during Commandlineaction:
+	remove periods;
 	repeat through the table of command topics:
 		if the player's command matches the topic entry:
-			say "[response entry] [line break]";
+			say "[response entry][line break]";
 			stop the action.
 
 Instead of exiting during Commandlineaction:
@@ -149,7 +167,8 @@ topic	response
 "ll"	"[fixed letter spacing]--r --r x_marks_the_spot.shp[line break]--r --r hidden_secret.csv"
 "ls" or "dir"	"[fixed letter spacing]x_marks_the_spot.shp	hidden_secret.csv"
 "pwd"	"[fixed letter spacing]/data"
-"vi [the shapefile]" or "emacs [the shapefile]" or "vim [the shapefile]"	"[roman type]You decide against opening a shape file in an editor"
+"vi [shapefile]" or "emacs [shapefile]" or "vim [shapefile]"	"[roman type]You decide against opening a shape file in an editor"
+"vi [csvfile]" or "emacs [csvfile]" or "vim [csvfile]"	"[show csv]"
 "[here]" or "[here] -h" or "[here] --help"	"[global help]"
 "[xyz]"	"[fixed letter spacing]Invalid Command: 'undefined'[line break][xyz help]"
 "[xyz] -h" or "[xyz] --help"	"[xyz help]"
@@ -157,6 +176,11 @@ topic	response
 "[xyz] -V" or "[xyz] --version" or "[here] -V" or "[here] --version"	"[fixed letter spacing]0.23.42"
 "[xyz] describe x7y9z63"	"[describe space]"
 "[trans] -h" or "[trans] --help"	"[help transform]"
+
+To say show csv:
+	say "[fixed letter spacing] 56.0;23;0;northeastern;blabla[line break]
+58.0;21;0;whatever;just another point[line break]
+57.0;20.0;0;something else;blubber".
 
 Table 4.0 - spaces
 id	space
@@ -186,7 +210,9 @@ Rule for printing a parser error when the latest parser error is the not a verb 
 			change the text of the player's command to P;
 			say "[fixed letter spacing]Unknown command: [player's command][line break][global help]" instead;
 		else:
-			say "[fixed letter spacing]sh: [player's command]: command not found[line break]" instead.
+			say "[fixed letter spacing]sh: [player's command]: command not found[line break]" instead;
+	else:
+		continue the action.
 
 To say global help:
 	say "[fixed letter spacing]Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
@@ -253,6 +279,7 @@ Chapter 98 - Pictures
 
 Figure of the cave is the file "cave.jpg" ("You are in a cavern").
 Figure of the newt is the file "molch_kl.png" ("A newt with a gray back and an orange belly").
+Figure of the office is the file "home_office.jpg" ("You are in your home office.").
 
 Chapter 99 - Mechanics
 
