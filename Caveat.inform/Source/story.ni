@@ -127,8 +127,8 @@ Before inserting the usb flash drive into the usb slot when the laptop is switch
 	continue the action.
 
 Examining the screen is being nosy. Examining the data is being nosy.
-Instead of being nosy, say "[if being nosy for the first time]This is interesting. [end if]Your file manager shows two files[if being nosy for the first time] on the flash drive[end if]:[line break]x_marks_the_spot.shp[line break]hidden_secret.csv.[paragraph break]
-You copy both files to your computer and open a terminal window."
+Instead of being nosy, say "[if being nosy for the first time]This is interesting. Your file manager shows two files on the flash drive:[line break]x_marks_the_spot.shp[line break]hidden_secret.csv.[paragraph break]
+You copy both files to your computer and open a terminal window.[otherwise]You open a terminal window."
 
 Instead of going south from the office, say "You think about going back to the cave, but you decide that the flash drive was probably the single most valuable item you could retrieve from there."
 	
@@ -176,6 +176,9 @@ topic	response
 "[xyz] -V" or "[xyz] --version" or "[here] -V" or "[here] --version"	"[fixed letter spacing]0.23.42"
 "[xyz] describe x7y9z63"	"[describe space]"
 "[trans] -h" or "[trans] --help"	"[help transform]"
+"[xyz] analyze"	"[fixed letter spacing]error: missing required argument 'id'"
+"[xyz] analyze -h" or "[xyz] analyze --help"	"[help analyze]"
+
 
 To say show csv:
 	say "[fixed letter spacing] 56.0;23;0;northeastern;blabla[line break]
@@ -217,14 +220,9 @@ Rule for printing a parser error when the latest parser error is the not a verb 
 To say global help:
 	say "[fixed letter spacing]Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
 Options:[line break]
-	 [special-style-1]-V, --version                   output the version number[line break]
-	 -h, --help                      output usage information[paragraph break]";
+	 [special-style-1]-V, --version                   output the version number[line break]   -h, --help                      output usage information[paragraph break]";
 say "[fixed letter spacing]Commands:[paragraph break]
-	[special-style-1]configure|c [bracket]set|verify[close bracket]        setup configuration for authentication[line break]
-	xyz|xs [bracket]list|create|upload[close bracket]     work with xyz spaces[line break]
-	transform|tf [bracket]csv2geo|shp2geo[close bracket]  convert from csv/shapefile to geojson[line break]
-	geocode|gc                      geocode feature[line break]
-	help [bracket]cmd[close bracket]                      display help for [bracket]cmd[close bracket]
+	[special-style-1]configure|c [bracket]set|verify[close bracket]        setup configuration for authentication[line break]xyz|xs [bracket]list|create|upload[close bracket]     work with xyz spaces[line break]transform|tf [bracket]csv2geo|shp2geo[close bracket]  convert from csv/shapefile to geojson[line break]geocode|gc                      geocode feature[line break]help [bracket]cmd[close bracket]                      display help for [bracket]cmd[close bracket]
 "
 
 To say xyz help:
@@ -252,6 +250,17 @@ Options:[line break]
    [special-style-1]csv2geo [bracket]options[close bracket] <path>  convert csv to geojson
 
 Features created from [time of day] to [time of day][line break]Features updated from [time of day] to [time of day]".
+
+To say help analyze:
+	say "[fixed letter spacing]Usage: analyze [bracket]options[close bracket] <id>[line break]
+property based analysis of the content of the given [bracket]id[close bracket][paragraph break]
+Options:[line break]
+  -l, --limit <limit>   Number of objects to be fetched[line break]
+  -h, --handle <handle> The handle to continue the iteration[line break]
+  -t, --tags <tags>     Tags to filter on[line break]
+  -p, --token <token>   a external token to access space[line break]
+  -h, --help            output usage information".
+
 		
 To say describe space:
 	say "=============================================[line break]
