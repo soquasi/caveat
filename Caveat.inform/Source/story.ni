@@ -127,8 +127,12 @@ Before inserting the usb flash drive into the usb slot when the laptop is switch
 	continue the action.
 
 Examining the screen is being nosy. Examining the data is being nosy.
-Instead of being nosy, say "[if being nosy for the first time]This is interesting. Your file manager shows two files on the flash drive:[line break]x_marks_the_spot.shp[line break]hidden_secret.csv.[paragraph break]
-You copy both files to your computer and open a terminal window.[otherwise]You open a terminal window."
+Instead of being nosy, say "[if being nosy for the first time]This is interesting. Your file manager shows two files on the flash drive:[line break]
+x_marks_the_spot.shp[line break]
+hidden_secret.csv.[paragraph break]
+A shapefile and a csv. The latter you could open with your spreadsheet program. You copy both files to your computer and open a terminal window.[line break]
+Didn't you have a utility for dealing with spatial data? You remember downloading the HERE CLI just recently. The command was 'here' which was easy to remember. Perhaps you could visualize the data.[line break]
+[otherwise]You open a terminal window."
 
 Instead of going south from the office, say "You think about going back to the cave, but you decide that the flash drive was probably the single most valuable item you could retrieve from there."
 	
@@ -173,11 +177,16 @@ topic	response
 "[xyz]"	"[fixed letter spacing]Invalid Command: 'undefined'[line break][xyz help]"
 "[xyz] -h" or "[xyz] --help"	"[xyz help]"
 "[xyz] list" or "[xyz] ls"	"[list of spaces]"
-"[xyz] -V" or "[xyz] --version" or "[here] -V" or "[here] --version"	"[fixed letter spacing]0.23.42"
+"[xyz] -V" or "[xyz] --version" or "[here] -V" or "[here] --version"	"[fixed letter spacing]1.0.0"
 "[xyz] describe x7y9z63"	"[describe space]"
 "[trans] -h" or "[trans] --help"	"[help transform]"
 "[xyz] analyze"	"[fixed letter spacing]error: missing required argument 'id'"
 "[xyz] analyze -h" or "[xyz] analyze --help"	"[help analyze]"
+"[conf] -h" or "[conf] --help"	"[help configure]"
+"[conf]"	"[fixed letter spacing]prompt: Email: player@example.com[line break]prompt: Password: *******[paragraph break]Configuration successful."
+"[conf] verify"	"Verification successful."
+"[conf] set"	"[first time][fixed letter spacing]prompt: Email: player@example.com[line break]prompt: Password: *******[line break]Secrets verified successfully.[line break]? Select default AppId.[line break]   1) sdofisodfiosadf (DEFAULT)[line break]   2) sdjfkjkdooiwere[line break][enter default][only][roman type]You've set your configuration."
+
 
 
 To say show csv:
@@ -208,6 +217,14 @@ Rule for printing a parser error when the latest parser error is the not a verb 
 			replace the regular expression "^(here xyz )(\w)" in P with "\2";
 			change the text of the player's command to P;
 			say "[fixed letter spacing]Unknown command: [P][line break][xyz help]" instead;
+		else if P matches the regular expression "^here configure":
+			replace the regular expression "^(here configure)(\w)" in P with "\2";
+			change the text of the player's command to P;
+			say "[fixed letter spacing]Invalid command '[P]'[line break][help configure]" instead;
+		else if P matches the regular expression "^here c":
+			replace the regular expression "^(here c)(\w)" in P with "\2";
+			change the text of the player's command to P;
+			say "[fixed letter spacing]Invalid command '[P]'[line break][help configure]" instead;
 		else if P matches the regular expression "^[here]":
 			replace the regular expression "^(here)(.*)" in P with "\2";
 			change the text of the player's command to P;
@@ -221,8 +238,7 @@ To say global help:
 	say "[fixed letter spacing]Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
 Options:[line break]
 	 [special-style-1]-V, --version                   output the version number[line break]   -h, --help                      output usage information[paragraph break]";
-say "[fixed letter spacing]Commands:[paragraph break]
-	[special-style-1]configure|c [bracket]set|verify[close bracket]        setup configuration for authentication[line break]xyz|xs [bracket]list|create|upload[close bracket]     work with xyz spaces[line break]transform|tf [bracket]csv2geo|shp2geo[close bracket]  convert from csv/shapefile to geojson[line break]geocode|gc                      geocode feature[line break]help [bracket]cmd[close bracket]                      display help for [bracket]cmd[close bracket]
+say "[fixed letter spacing]Commands:[paragraph break]	[special-style-1]configure|c [bracket]set|verify[close bracket]        setup configuration for authentication[line break]xyz|xs [bracket]list|create|upload[close bracket]     work with xyz spaces[line break]transform|tf [bracket]csv2geo|shp2geo[close bracket]  convert from csv/shapefile to geojson[line break]geocode|gc                      geocode feature[line break]help [bracket]cmd[close bracket]                      display help for [bracket]cmd[close bracket]
 "
 
 To say xyz help:
@@ -261,6 +277,16 @@ Options:[line break]
   -p, --token <token>   a external token to access space[line break]
   -h, --help            output usage information".
 
+To say help configure:
+	say "[fixed letter spacing]Usage: here-configure [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
+Options:[line break]
+  -V, --version  output the version number[line break]
+  -h, --help     output usage information[paragraph break]
+Commands:[line break]
+set [bracket]env[close bracket]      configure HERE credentials for authentiction[line break]
+  account        configure HERE account email/password for authentiction. Account can be created from https://developer.here.com/[line break]
+  verify [bracket]env[close bracket]   Verify credentials".
+
 		
 To say describe space:
 	say "=============================================[line break]
@@ -277,7 +303,11 @@ TagName            Count[line break]
 ----------------   --------[line break]
 zzz                       a".
 
+To say enter default: 
+	say  "1[line break]Default App Selected - sdofisodfiosadf[paragraph break]".
+
 Understand "here" as "[here]". Understand "here xyz" as "[xyz]".	Understand "here transform" as "[trans]".
+Understand "here configure" or "here c" as "[conf]".
 
 Chapter 97 - Customized messages
 
@@ -389,3 +419,5 @@ Glulx input handling rule for a line-event:
 	]
 
 [For printing the name of something: say "XXXX".]
+
+Test cli with "n/insert usb in usb/x data/here --help"
