@@ -168,6 +168,7 @@ Instead of exiting during Commandlineaction:
 		
 Table 3.0 - command topics
 topic	response
+"fortune" or "/usr/games/fortune"	"[fortunes]"
 "ll"	"[fixed letter spacing]--r --r x_marks_the_spot.shp[line break]--r --r hidden_secret.csv"
 "ls" or "dir"	"[fixed letter spacing]x_marks_the_spot.shp	hidden_secret.csv"
 "pwd"	"[fixed letter spacing]/data"
@@ -305,6 +306,24 @@ zzz                       a".
 
 To say enter default: 
 	say  "1[line break]Default App Selected - sdofisodfiosadf[paragraph break]".
+	
+Table of Fortunes
+fortune
+"The rain it raineth on the just[line break]And also on the unjust fella;[line break]But chiefly on the just, because[line break]The unjust hath the just's umbrella.[line break] -- Charles Bowen"
+"A QA tester walks into a bar and orders a beer.[line break]He orders 0 beers.[line break]He orders 999999999999 beers.[line break]He orders a lizard.[line break]He orders -1 beers.[line break]He orders NULL beers.[line break]He orders asnwikfjsdf."
+"A computer lets you make more mistakes faster than any other invention, with the possible exceptions of handguns and Tequilla.[line break] -- Mitch Ratcliffe"
+"Any sufficiently advanced bug is indistinguishable from a feature.[line break] --Rich Kulawiec"
+"Beware of bugs in the above code; I have only proved it correct, not tried it[line break] -- Donald Knuth"
+"I'm not getting old; I'm degrading gracefully.[line break] --catnip"
+"God is real, unless declared integer."
+"Life would be so much easier if we could just look at the source code.[line break] -- Dave Olson"
+"The trouble with computers is that they do what you tell them, not what you want.[line break] -- D. Cohen"
+"There was a young lady of Riga[line break]Who smiled as she rode on a tiger[line break]They came back from the ride[line break]With the lady inside[line break]And the smile on the face of the tiger"
+"Unix is user-friendly. It’s just picky about who its friends are."
+
+To say fortunes:
+	choose a random row in the table of fortunes;
+	say "[fortune entry]".
 
 Understand "here" as "[here]". Understand "here xyz" as "[xyz]".	Understand "here transform" as "[trans]".
 Understand "here configure" or "here c" as "[conf]".
