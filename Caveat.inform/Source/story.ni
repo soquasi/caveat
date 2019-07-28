@@ -320,6 +320,9 @@ fortune
 "The trouble with computers is that they do what you tell them, not what you want.[line break] -- D. Cohen"
 "There was a young lady of Riga[line break]Who smiled as she rode on a tiger[line break]They came back from the ride[line break]With the lady inside[line break]And the smile on the face of the tiger"
 "Unix is user-friendly. It’s just picky about who its friends are."
+"Never make anything simple and efficient when a way can be found to make it complex and wonderful."
+"What's the point of being alive if you're not silly? [line break]Life is too important to be serious.[line break]I have this theory that seriousness is the refuge of the shallow.[line break]I absolutely believe it with all my heart.[line break]	-- Rita Mae Brown"
+"The important thing to forecast is not the automobile,[line break]but the parking problem; not the television,[line break]but the soap opera.     --Isaac Asimov"
 
 To say fortunes:
 	choose a random row in the table of fortunes;
