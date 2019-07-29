@@ -184,9 +184,9 @@ topic	response
 "[xyz] analyze"	"[fixed letter spacing]error: missing required argument 'id'"
 "[xyz] analyze -h" or "[xyz] analyze --help"	"[help analyze]"
 "[conf] -h" or "[conf] --help"	"[help configure]"
-"[conf]"	"[fixed letter spacing]prompt: Email: player@example.com[line break]prompt: Password: *******[paragraph break]Configuration successful."
+"[conf]"	"[first time][fixed letter spacing]prompt: Email: player@example.com[line break]prompt: Password: *******[paragraph break]Configuration successful.[line break][only][roman type](You've already set your configuration.)"
 "[conf] verify"	"Verification successful."
-"[conf] set"	"[first time][fixed letter spacing]prompt: Email: player@example.com[line break]prompt: Password: *******[line break]Secrets verified successfully.[line break]? Select default AppId.[line break]   1) sdofisodfiosadf (DEFAULT)[line break]   2) sdjfkjkdooiwere[line break][enter default][only][roman type]You've set your configuration."
+"[conf] set"	"[first time][fixed letter spacing]prompt: Email: player@example.com[line break]prompt: Password: *******[line break]Secrets verified successfully.[line break]? Select default AppId.[line break]   1) sdofisodfiosadf (DEFAULT)[line break]   2) sdjfkjkdooiwere[line break][enter default][only][roman type](You've already set your configuration.)"
 
 
 
