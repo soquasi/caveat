@@ -21,7 +21,7 @@ Rule for starting the virtual machine:
 	follow the current graphics drawing rule;
 	move USB flash drive to player.
 	
-Introduction is a room. "[line break][if unvisited][italic type]This is an interactive tutorial. You can type 'next' or 'n' to advance to the next step in the tutorial. Type 'help' if you need further assistance. Type 'x thing' or 'examine thing' to examine a thing.[roman type][line break]You found it in the cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it up soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.[otherwise]Your steps produce a hollow echo, as if someone (or something?) was following you."
+Introduction is a room. "[line break][if unvisited][italic type]This is an interactive tutorial. You can type 'next' or 'n' to advance to the next step in the tutorial. Type 'help' if you need further assistance. Type 'x thing' or 'examine thing' to examine a thing. You can try to 'take thing' or 'turn thing on' or 'insert thing into other_thing', for example, to further interact with your surroundings.[roman type][paragraph break][bold type]In the cave[paragraph break][roman type]You found it in the cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it out soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.[otherwise]Your steps produce a hollow echo, as if someone (or something?) was following you."
 
 The cave is a backdrop in introduction. The description is "The rock faces surround you[if location is lit], catching the light of your torch in their shiny surface, yet[end if] dry to the touch..[first time] The natural dome is too high for you to feel claustrophobic[only]." 
 Understand "cave" or "cavern" or "hall" or "darkness" or "dome" as the cave.
@@ -89,6 +89,8 @@ The laptop is a device. It is on the desk. The description is "Not too high-end,
 The USB slot is an open container and part of the laptop.
 The screen is part of the laptop.
 
+Some cds are things on the desk. The description is "Various CD with ancient software is lying in a corner of the room. You will toss them sometime soon, but now is not the time." They are undescribed. Understand "cd" or "disks" or "disk" as the cds.
+
 Does the player mean switching on the chair: it is very unlikely.
 Does the player mean switching on the laptop: it is very likely.
 
@@ -105,6 +107,7 @@ Does the player mean inserting the USB flash drive into the USB slot: it is very
 Does the player mean inserting into the USB slot: it is very likely.
 Does the player mean inserting into the USB flash drive: it is very unlikely.
 Does the player mean reading the USB slot: it is very unlikely.
+Does the player mean examining the USB flash drive in the office: it is likely.
 Does the player mean reading the USB flash drive: it is likely.
 Does the player mean removing the USB slot from: it is very likely.
 Does the player mean switching off the USB flash drive in introduction: it is very unlikely.
@@ -379,6 +382,7 @@ topic	helptext
 [keywords yet TODO: "xyz account","space(s)" or "xyz space(s)"]
 
 Instead of telling yourself about the topic understood, try npcasking the topic understood.
+Instead of asking yourself for something not visible, try npcasking the topic understood.
 
 Howtoasking  is an action applying to one topic.
 Understand "how do I [text]" or "how do you [text]" or "how to [text]" as howtoasking.
