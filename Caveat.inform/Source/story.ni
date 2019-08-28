@@ -141,7 +141,7 @@ Instead of going south from the office, say "You think about going back to the c
 	
 
 Understand "slot" or "USB" or "USB slot" as the USB slot.
-Understand "USB" or "flash drive" or "flash storage" or "storage"  or "USB stick" or "drive" or "plug" or "gnawed/tattered/teal/blue" or "tooth marks" or "teeth marks" as the USB flash drive.
+Understand "USB" or "flash drive" or "flash storage" or "storage"  or "USB stick" or "drive" or "plug" or "gnawed/tattered/teal/blue" or "tooth marks" or "teeth marks" or "marks" as the USB flash drive.
 Understand "computer" or "PC" or "your computer" or "my computer" or "your PC" or "my PC" or "laptop" or "your laptop" or "my laptop" as "[the laptop]".
 Understand "screen" or "monitor" as the screen.
 Understand  "plug [something] in [something]" as inserting it into.
@@ -172,11 +172,14 @@ Instead of exiting during Commandlineaction:
 Table 3.0 - command topics
 topic	response
 "fortune" or "/usr/games/fortune"	"[fortunes]"
-"ll"	"[fixed letter spacing]--r --r x_marks_the_spot.shp[line break]--r --r hidden_secret.csv"
+"ll -a"	"[fixed letter spacing]dr-xr-xr-x ./[line break]dr-xr-xr-x ../[line break]-rw-r--r-- x_marks_the_spot.shp[line break]-rw-r--r-- hidden_secret.csv"
+"ll"	"[fixed letter spacing]-rw-r--r-- x_marks_the_spot.shp[line break]-rw-r--r-- hidden_secret.csv"
 "ls" or "dir"	"[fixed letter spacing]x_marks_the_spot.shp	hidden_secret.csv"
+"ls -a"	"[fixed letter spacing]./                   ../[line break]x_marks_the_spot.shp	hidden_secret.csv"
 "pwd"	"[fixed letter spacing]/data"
 "vi [shapefile]" or "emacs [shapefile]" or "vim [shapefile]"	"[roman type]You decide against opening a shape file in an editor"
-"vi [csvfile]" or "emacs [csvfile]" or "vim [csvfile]"	"[show csv]"
+"less [shapefile]" or "more [shapefile]"	"[roman type]You decide against viewing the raw data of the shape file"
+"vi [csvfile]" or "emacs [csvfile]" or "vim [csvfile]" or "less [csvfile]" or "more [csvfile]"	"[show csv]"
 "[here]" or "[here] -h" or "[here] --help"	"[global help]"
 "[xyz]"	"[fixed letter spacing]Invalid Command: 'undefined'[line break][xyz help]"
 "[xyz] -h" or "[xyz] --help"	"[xyz help]"
@@ -314,7 +317,7 @@ Table of Fortunes
 fortune
 "The rain it raineth on the just[line break]And also on the unjust fella;[line break]But chiefly on the just, because[line break]The unjust hath the just's umbrella.[line break] -- Charles Bowen"
 "A QA tester walks into a bar and orders a beer.[line break]He orders 0 beers.[line break]He orders 999999999999 beers.[line break]He orders a lizard.[line break]He orders -1 beers.[line break]He orders NULL beers.[line break]He orders asnwikfjsdf."
-"A computer lets you make more mistakes faster than any other invention, with the possible exceptions of handguns and Tequilla.[line break] -- Mitch Ratcliffe"
+"A computer lets you make more mistakes faster than any other invention, with the possible exceptions of handguns and Tequila.[line break] -- Mitch Ratcliffe"
 "Any sufficiently advanced bug is indistinguishable from a feature.[line break] --Rich Kulawiec"
 "Beware of bugs in the above code; I have only proved it correct, not tried it[line break] -- Donald Knuth"
 "I'm not getting old; I'm degrading gracefully.[line break] --catnip"
@@ -326,6 +329,7 @@ fortune
 "Never make anything simple and efficient when a way can be found to make it complex and wonderful."
 "What's the point of being alive if you're not silly? [line break]Life is too important to be serious.[line break]I have this theory that seriousness is the refuge of the shallow.[line break]I absolutely believe it with all my heart.[line break]	-- Rita Mae Brown"
 "The important thing to forecast is not the automobile,[line break]but the parking problem; not the television,[line break]but the soap opera.     --Isaac Asimov"
+"To be fully alive, fully human, and completely awake is to be continually thrown out of the nest. To live fully is to be always in no-man’s-land, to experience each moment as completely new and fresh. To live is to be willing to die over and over again. --Pema Chodron"
 
 To say fortunes:
 	choose a random row in the table of fortunes;
@@ -407,6 +411,11 @@ Understand "a file" or "my file" or "your file" or "the file" as "[the file]".
 Understand "data" or "my data" or "your data" or "the data" as "[the data]".
 Understand "credentials" or "my credentials" or "the credentials" or "here credentials" as "[the creds]".
 Understand "spaces" or "my spaces" or "the spaces" or "xyz spaces" as "[the spaces]".
+
+Understand "look around/behind" as looking.
+Understand "turn" or "turn around" as objectless turning.
+Objectless turning is an action applying to nothing.
+Report objectless turning: say "You turn. [the description of the location]."
 
 Understand the command "read" as something new.
 Understand "read [something]" as reading. Reading is an action applying to one thing.
