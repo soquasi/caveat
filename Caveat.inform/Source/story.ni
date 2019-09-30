@@ -9,65 +9,68 @@ Include Glulx Text Effects by Emily Short.
 The story headline is "An Interactive Tutorial for HERE XYZ".
 The story genre is "Other".
 
-Chapter 1 - Introduction
+Chapter 1 - The Cave
 
 The graphics window proportion is 20. The graphics window position is g-left.
 	
 Rule for starting the virtual machine:
 	now the current graphics drawing rule is the centered scaled drawing rule;
-	blank window to "$000000";
-	now the currently shown picture is the figure of the cave;
+	blank window to "$303030";
+	now the currently shown picture is the figure of the cave loc;
 	now the time of day is 4:00 PM;
 	follow the current graphics drawing rule;
 	move USB flash drive to player.
 	
-Introduction is a room. "[line break][if unvisited][italic type]This is an interactive tutorial. You can type 'next' or 'n' to advance to the next step in the tutorial. Type 'help' if you need further assistance. Type 'x thing' or 'examine thing' to examine a thing. You can try to 'take thing' or 'turn thing on' or 'insert thing into other_thing', for example, to further interact with your surroundings.[roman type][paragraph break][bold type]In the cave[paragraph break][roman type]You found it in the cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it out soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.[otherwise]Your steps produce a hollow echo, as if someone (or something?) was following you."
+A room called The Cave is south of the Office. "[line break][if unvisited][line break][italic type]Introduction[line break][roman type]This is an interactive tutorial. You can type 'next' or 'n' to advance to the next step in the tutorial. Type 'help' if you need further assistance. Type 'x thing' or 'examine thing' to examine a thing. You can try to 'take thing' or 'turn thing on' or 'insert thing into other_thing', for example, to further interact with your surroundings.[paragraph break][roman type]You found it in the cave. It would have stood out like a sore tooth, but for the darkness surrounding it. Your flashlight picked it out soon enough. It was a bit tattered and seemed to have been gnawed on. The plug on the flash drive was still ok, and you wondered what data it contained.[otherwise]Your steps produce a hollow echo, as if someone (or something?) was following you."
 
-The cave is a backdrop in introduction. The description is "The rock faces surround you[if location is lit], catching the light of your torch in their shiny surface, yet[end if] dry to the touch..[first time] The natural dome is too high for you to feel claustrophobic[only]." 
+The cave loc is a backdrop in the Cave. The description is "The rock faces surround you[if location is lit], catching the light of your torch in their shiny surface, yet[end if] dry to the touch..[first time] The natural dome is too high for you to feel claustrophobic[only]." 
 Understand "cave" or "cavern" or "hall" or "darkness" or "dome" as the cave.
 
-The flashlight is a device in introduction. it is scenery and switched on.
+The flashlight is a device in the cave. it is scenery and switched on.
 Every turn when the flashlight is switched on:
 	now fearsomeness is 0;
-	now the Introduction is lit.
+	now the cave is lit.
 	
-After deciding the scope of the player when the location is the Introduction:
+Before taking inventory in the cave:
+	now the player holds the flashlight.
+	
+After deciding the scope of the player when the location is the cave:
 	place the flashlight in scope.
 
 The fearsomeness is a number that varies. The fearsomeness is 0.
 
-Every turn when the introduction is dark and the player is in introduction:
+Every turn when the cave is dark and the player is in the cave:
 	increase the fearsomeness by 1;
 	if the fearsomeness is 5:
 		say "You'd better switch on the light.";
 		a gruesome death occurs in one turn from now.
 	
 At the time when a gruesome death occurs:
-	if the introduction is dark:
+	if the cave is dark:
 		end the story saying "You have been eaten by a wandering grue".
 	
-The usb flash drive is held by the player.
+The usb flash drive is a thing held by the player.
 
 Does the player mean switching on the flash drive: it is very unlikely.
 
-Before of going north in Introduction: 
+Before of going north in the cave: 
 	blank window to "$ffffff";
 	now the currently shown picture is the figure of the office;
 	follow the current graphics drawing rule.
 	
-After going north from introduction for the first time:
+After going north from the cave for the first time:
 	try silently entering the chair;
 	continue the action.
 	
-After switching off the flashlight in introduction:
-	now Introduction is dark; continue the action.
+After switching off the flashlight in the cave:
+	now the cave is dark; continue the action.
 	
 Understand "lamp" or "light" or "torch" as the flashlight.
 	
 Chapter 2 - The Office
 
-The Office is north of the introduction. "[line break][if unvisited]Now y[otherwise]Y[end if]ou're sitting here in front of your computer[if unvisited], turning the battered flash drive in your fingers and wondering whether you should insert this unknown device in your laptop[end if]."
-The USB flash drive is a thing. The description is "Its plastic part is teal blue, rough around the edges and you can see the marks of small teeth on it." The printed name of the USB flash drive is "flash drive".
+The Office is north of In the cave. "[line break][if unvisited]Now y[otherwise]Y[end if]ou're sitting here in front of your computer[if unvisited], turning the battered flash drive in your fingers and wondering whether you should insert this unknown device in your laptop[end if]."
+The flash drive is a thing. The description is "Its plastic part is teal blue, rough around the edges and you can see the marks of small teeth on it." The printed name of the USB flash drive is "flash drive". 
 
 The chair is an enterable supporter in the office. the description is "Almost too comfortable for working."
 The desk is a supporter in the office. It is undescribed. The laptop is on the desk. Understand "desk" or "wooden" or "wood" as the desk.
@@ -110,8 +113,8 @@ Does the player mean reading the USB slot: it is very unlikely.
 Does the player mean examining the USB flash drive in the office: it is likely.
 Does the player mean reading the USB flash drive: it is likely.
 Does the player mean removing the USB slot from: it is very likely.
-Does the player mean switching off the USB flash drive in introduction: it is very unlikely.
-Does the player mean switching on the USB flash drive in introduction: it is very unlikely.
+Does the player mean switching off the USB flash drive in the cave: it is very unlikely.
+Does the player mean switching on the USB flash drive in the cave: it is very unlikely.
 Does the player mean doing anything other than inserting or removing or reading to the USB flash drive: It is very unlikely.
 
 The can't take off what's not worn rule is not listed in the check removing it from rulebook.
@@ -120,7 +123,7 @@ The can't take off what's not worn rule is not listed in the check removing it f
 Instead of reading the USB flash drive:
 	try inserting the noun into the USB slot.
 
-Before inserting the usb flash drive into the usb slot for the first time, say "Not doing this very thing is recommended practice and good common sense in normal circumstances. But you doubt that anybody would leave a corrupted, malware ridden data store in so inconspicuous a place as deep down in a cave. You throw caution to the winds for once." 
+Before inserting the usb flash drive into the usb slot for the first time, say "Not doing this very thing is recommended practice and good common sense in normal circumstances. But you doubt that anybody would leave a corrupted, malware ridden data store in so inconspicuous a place as deep down in a cave.[line break]You throw caution to the winds for once." 
 
 After inserting the usb flash drive into the usb slot for the first time:
 	say "Your laptop reads the data."
@@ -175,7 +178,7 @@ topic	response
 "ll -a"	"[fixed letter spacing]dr-xr-xr-x ./[line break]dr-xr-xr-x ../[line break]-rw-r--r-- x_marks_the_spot.shp[line break]-rw-r--r-- hidden_secret.csv"
 "ll"	"[fixed letter spacing]-rw-r--r-- x_marks_the_spot.shp[line break]-rw-r--r-- hidden_secret.csv"
 "ls" or "dir"	"[fixed letter spacing]x_marks_the_spot.shp	hidden_secret.csv"
-"ls -a"	"[fixed letter spacing]./                   ../[line break]x_marks_the_spot.shp	hidden_secret.csv"
+"ls -a"	"[fixed letter spacing]./                    ../[line break]x_marks_the_spot.shp	 hidden_secret.csv"
 "pwd"	"[fixed letter spacing]/data"
 "vi [shapefile]" or "emacs [shapefile]" or "vim [shapefile]"	"[roman type]You decide against opening a shape file in an editor"
 "less [shapefile]" or "more [shapefile]"	"[roman type]You decide against viewing the raw data of the shape file"
@@ -330,10 +333,12 @@ fortune
 "What's the point of being alive if you're not silly? [line break]Life is too important to be serious.[line break]I have this theory that seriousness is the refuge of the shallow.[line break]I absolutely believe it with all my heart.[line break]	-- Rita Mae Brown"
 "The important thing to forecast is not the automobile,[line break]but the parking problem; not the television,[line break]but the soap opera.     --Isaac Asimov"
 "To be fully alive, fully human, and completely awake is to be continually thrown out of the nest. To live fully is to be always in no-man’s-land, to experience each moment as completely new and fresh. To live is to be willing to die over and over again. --Pema Chodron"
+“What you do in this world is a matter of no consequence. The question is what can you make people believe you have done. --Arthur Conan Doyle, A Study in Scarlet"
+“Perseverance is the hard work you do after you get tired of doing the hard work you already did. --Newt Gingrich”
 
 To say fortunes:
 	choose a random row in the table of fortunes;
-	say "[fortune entry]".
+	say "[line break][fortune entry]".
 
 Understand "here" as "[here]". Understand "here xyz" as "[xyz]".	Understand "here transform" as "[trans]".
 Understand "here configure" or "here c" as "[conf]".
@@ -341,11 +346,11 @@ Understand "here configure" or "here c" as "[conf]".
 Chapter 97 - Customized messages
 
 Instead of eating the usb flash drive, say "It is mangled enough as it is."
-Instead of listening when the player is in introduction, say "You stand still and listen. Somewhere water is dripping in a slow but steady pace. You resume breathing."
+Instead of listening when the player is in the cave, say "You stand still and listen. Somewhere water is dripping in a slow but steady pace. You resume breathing."
 
 Chapter 98 - Pictures
 
-Figure of the cave is the file "cave.jpg" ("You are in a cavern").
+Figure of the cave loc is the file "cave.jpg" ("You are in a cavern").
 Figure of the newt is the file "molch_kl.png" ("A newt with a gray back and an orange belly").
 Figure of the office is the file "home_office.jpg" ("You are in your home office.").
 
@@ -413,6 +418,8 @@ Understand "credentials" or "my credentials" or "the credentials" or "here crede
 Understand "spaces" or "my spaces" or "the spaces" or "xyz spaces" as "[the spaces]".
 
 Understand "look around/behind" as looking.
+[The room description heading rule is not listed in the carry out looking rulebook.]
+
 Understand "turn" or "turn around" as objectless turning.
 Objectless turning is an action applying to nothing.
 Report objectless turning: say "You turn. [the description of the location]."
