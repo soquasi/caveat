@@ -186,12 +186,16 @@ topic	response
 "[here]" or "[here] -h" or "[here] --help"	"[global help]"
 "[xyz]"	"[fixed letter spacing]Invalid Command: 'undefined'[line break][xyz help]"
 "[xyz] -h" or "[xyz] --help"	"[xyz help]"
+"[xyz] list -h" or "[xyz] list --help"	"[help list]"
 "[xyz] list" or "[xyz] ls"	"[list of spaces]"
 "[xyz] -V" or "[xyz] --version" or "[here] -V" or "[here] --version"	"[fixed letter spacing]1.0.0"
+"[xyz] describe -h" or "[xyz] describe --help"	"[help describe]"
 "[xyz] describe x7y9z63"	"[describe space]"
 "[trans] -h" or "[trans] --help"	"[help transform]"
 "[xyz] analyze"	"[fixed letter spacing]error: missing required argument 'id'"
 "[xyz] analyze -h" or "[xyz] analyze --help"	"[help analyze]"
+"[xyz] hexbin -h" or "[xyz] hexbin --help"	"[help hexbin]"
+"[xyz] show -h" or "[xyz] show --help"	"[help show]"
 "[conf] -h" or "[conf] --help"	"[help configure]"
 "[conf]"	"[first time][fixed letter spacing]prompt: Email: player@example.com[line break]prompt: Password: *******[paragraph break]Configuration successful.[line break][only][roman type](You've already set your configuration.)"
 "[conf] verify"	"Verification successful."
@@ -247,8 +251,8 @@ Rule for printing a parser error when the latest parser error is the not a verb 
 To say global help:
 	say "[fixed letter spacing]Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
 Options:[line break]
-	 [special-style-1]-V, --version                   output the version number[line break]   -h, --help                      output usage information[paragraph break]";
-say "[fixed letter spacing]Commands:[paragraph break]	[special-style-1]configure|c [bracket]set|verify[close bracket]        setup configuration for authentication[line break]xyz|xs [bracket]list|create|upload[close bracket]     work with xyz spaces[line break]transform|tf [bracket]csv2geo|shp2geo[close bracket]  convert from csv/shapefile to geojson[line break]geocode|gc                      geocode feature[line break]help [bracket]cmd[close bracket]                      display help for [bracket]cmd[close bracket]
+	 [special-style-1]-V, --version                   output the version number[line break] -h, --help                      output usage information[paragraph break]";
+say "[fixed letter spacing]Commands:[paragraph break][special-style-1]configure|c [bracket]set|verify[close bracket]        setup configuration for authentication[line break]xyz|xs [bracket]list|create|upload[close bracket]     work with xyz spaces[line break]transform|tf [bracket]csv2geo|shp2geo[close bracket]  convert from csv/shapefile to geojson[line break]geocode|gc                      geocode feature[line break]help [bracket]cmd[close bracket]                      display help for [bracket]cmd[close bracket]
 "
 
 To say xyz help:
@@ -257,16 +261,42 @@ Options:[line break]
 	 [special-style-1]-V, --version            output the version number[line break]
 	 -h, --help               output usage information[paragraph break]";
 say "[fixed letter spacing]Commands:[paragraph break]
-		[special-style-1]list|ls [bracket]options[close bracket]        information about available xyz spaces[line break]
-		describe [bracket]options[close bracket] <id>  gives the summary details of the given space [bracket]id[close bracket][line break]
-		analyze [bracket]options[close bracket] <id>   property based analysis of the content of the given [bracket]id[close bracket][line break]
-		show [bracket]options[close bracket] <id>      shows the content of the given [bracket]id[close bracket][line break]
-		delete <id>              delete the xyzspace with the given id[line break]
-		create [bracket]options[close bracket]         create a new xyzspace[line break]
-		clear [bracket]options[close bracket] <id>     clear data from xyz space[line break]
+		[special-style-1]list|ls [options]        information about available xyz spaces[line break]
+		describe [idoptions]  gives the summary details of the given space [id][line break]
+		analyze [idoptions]   property based analysis of the content of the given [id][line break]
+		hexbin [idoptions]    create hexbins (and their centroids) using points in an XYZ space and upload them to another space[line break]
+		show [idoptions]      shows the content of the given [id][line break]
+		delete [idoptions]              delete the xyzspace with the given id[line break]
+		create [options]         create a new xyzspace[line break]
+		clear [idoptions]     clear data from xyz space[line break]
 		token                    list all xyz token[line break]
-		upload [bracket]options[close bracket] <id>    upload a local geojson file to the given id".
+		upload [options] [bracket]id[close bracket]    upload a local geojson file to the given id,, if executed without spaceid with a file, new space will be created[line break]
+		config [idoptions]    configure/view advanced xyz options for space[line break]
+		virtualize|vs [options]  {xyz pro} create a new virtual xyzspace".
 		
+To say id:
+	say "[bracket]id[close bracket]"
+	
+To say options:
+	say "[bracket]options[close bracket]"
+	
+To say idoptions:
+	say "[options] <id>"
+	
+To say help list:
+	say "[fixed letter spacing]Usage: list|ls [options][paragraph break]information about available xyz spaces[paragraph break]Options:[line break]
+  -r, --raw          show raw xyzspace definition[line break]
+  -p, --prop <prop>  property fields to include in table (default: [bracket][close bracket])[line break]
+  -h, --help         output usage information"
+	
+To say help describe:
+	say "[fixed letter spacing]Usage: describe [idoptions][paragraph break]gives the summary details of the given space [id][paragraph break]Options:[line break]
+  -l, --limit <limit>    Number of objects to be fetched[line break]
+  -o, --offset <offset>  The offset / handle to continue the iteration[line break]
+  -t, --tags <tags>      Tags to filter on[line break]
+  -p, --token <token>    a external token to access space[line break]
+  -h, --help             output usage information"
+
 To say help transform:
 	say "[fixed letter spacing]Usage:   [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
 Options:[line break]
@@ -278,15 +308,45 @@ Options:[line break]
 Features created from [time of day] to [time of day][line break]Features updated from [time of day] to [time of day]".
 
 To say help analyze:
-	say "[fixed letter spacing]Usage: analyze [bracket]options[close bracket] <id>[line break]
-property based analysis of the content of the given [bracket]id[close bracket][paragraph break]
+	say "[fixed letter spacing]Usage: analyze [idoptions][paragraph break]
+property based analysis of the content of the given [id][paragraph break]
 Options:[line break]
-  -l, --limit <limit>   Number of objects to be fetched[line break]
-  -h, --handle <handle> The handle to continue the iteration[line break]
-  -t, --tags <tags>     Tags to filter on[line break]
-  -p, --token <token>   a external token to access space[line break]
-  -h, --help            output usage information".
+  -l, --limit <limit>    Number of objects to be fetched[line break]
+  -o, --offset <offset>  The offset / handle to continue the iteration[line break]
+  -t, --tags <tags>      Tags to filter on[line break]
+  -p, --token <token>    a external token to access space[line break]
+  -h, --help             output usage information".
 
+To say help hexbin:
+	say "[fixed letter spacing]Usage: hexbin [idoptions][paragraph break]
+create hexbins (and their centroids) using points in an XYZ space and upload them to another space[paragraph break]
+Options:[line break]
+  -c, --cellsize <cellsize>      size of hexgrid cells in meters, comma-separate multiple values[line break]
+  -i, --ids                      add IDs of features counted within the hexbin as an array inside the property of the hexbin created[line break]
+  -p, --groupBy <groupBy>        name of the feature property by which hexbin counts will be further grouped[line break]
+  -r, --readToken <readToken>    token of another user's source space, from which points will be read[line break]
+  -w, --writeToken <writeToken>  token of another user's target space to which hexbins will be written[line break]
+  -t, --tags <tags>              only make hexbins for features in the source space that match the specific tag(s), comma-separate multiple values[line break]
+  -b, --bbox <bbox>              only create hexbins for records inside a specified bounding box - minLon,minLat,maxLon,maxLat[line break]
+  -l, --latitude <latitude>      latitude which will be used for converting cellSize from meters to degrees[line break]
+  -z, --zoomLevels <zoomLevels>  create hexbins optimized for zoom levels -- comma separate multiple values, (-z 8,10,12) or dash for continuous range (-z 10-15)[line break]
+  -h, --help                     output usage information".
+
+To say help show:
+	say "[fixed letter spacing]Usage: show [idoptions][paragraph break]
+shows the content of the given [id][paragraph break]
+Options:[line break]
+  -l, --limit <limit>        Number of objects to be fetched[line break]
+  -o, --offset <offset>      The offset / handle to continue the iteration[line break]
+  -t, --tags <tags>          Tags to filter on[line break]
+  -r, --raw                  show raw xyzspace content[line break]
+  -p, --prop <prop>          selection of properties, use p.<FEATUREPROP> or f.<id/updatedAt/tags/createdAt>[line break]
+  -s, --search <propfilter>  search expression in [quotation mark]double quotes[quotation mark], use single quote to signify string value,  use p.<FEATUREPROP> or f.<id/updatedAt/tags/createdAt> (Use [']+['] for AND , Operators : >,<,<=,<=,=,!=) (use comma separated values to search multiple values of a property) {e.g. [quotation mark]p.name=John,Tom+p.age<50+p.phone=[']9999999[']+p.zipcode=123456[quotation mark]}[line break]
+  -w, --web                  display xyzspace on http://geojson.tools[line break]
+  -v, --vector               display xyzspace in Tangram[line break]
+  -h, --help                 output usage information".
+
+	
 To say help configure:
 	say "[fixed letter spacing]Usage: here-configure [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
 Options:[line break]
