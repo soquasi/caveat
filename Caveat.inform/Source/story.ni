@@ -249,14 +249,14 @@ Rule for printing a parser error when the latest parser error is the not a verb 
 		continue the action.
 
 To say global help:
-	say "[fixed letter spacing]Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
+	say "[fixed letter spacing]Usage: [options] [command][paragraph break]
 Options:[line break]
 	 [special-style-1]-V, --version                   output the version number[line break] -h, --help                      output usage information[paragraph break]";
 say "[fixed letter spacing]Commands:[paragraph break][special-style-1]configure|c [bracket]set|verify[close bracket]        setup configuration for authentication[line break]xyz|xs [bracket]list|create|upload[close bracket]     work with xyz spaces[line break]transform|tf [bracket]csv2geo|shp2geo[close bracket]  convert from csv/shapefile to geojson[line break]geocode|gc                      geocode feature[line break]help [bracket]cmd[close bracket]                      display help for [bracket]cmd[close bracket]
 "
 
 To say xyz help:
-	say	"[fixed letter spacing]Usage: [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
+	say	"[fixed letter spacing]Usage: [options] [command][paragraph break]
 Options:[line break]
 	 [special-style-1]-V, --version            output the version number[line break]
 	 -h, --help               output usage information[paragraph break]";
@@ -270,18 +270,21 @@ say "[fixed letter spacing]Commands:[paragraph break]
 		create [options]         create a new xyzspace[line break]
 		clear [idoptions]     clear data from xyz space[line break]
 		token                    list all xyz token[line break]
-		upload [options] [bracket]id[close bracket]    upload a local geojson file to the given id,, if executed without spaceid with a file, new space will be created[line break]
+		upload [options] [id]    upload a local geojson file to the given id,, if executed without spaceid with a file, new space will be created[line break]
 		config [idoptions]    configure/view advanced xyz options for space[line break]
 		virtualize|vs [options]  {xyz pro} create a new virtual xyzspace".
-		
-To say id:
-	say "[bracket]id[close bracket]"
 	
 To say options:
 	say "[bracket]options[close bracket]"
 	
 To say idoptions:
 	say "[options] <id>"
+		
+To say id:
+	say "[bracket]id[close bracket]"
+	
+To say command:
+	say "[bracket]command[close bracket]"
 	
 To say help list:
 	say "[fixed letter spacing]Usage: list|ls [options][paragraph break]information about available xyz spaces[paragraph break]Options:[line break]
@@ -298,12 +301,12 @@ To say help describe:
   -h, --help             output usage information"
 
 To say help transform:
-	say "[fixed letter spacing]Usage:   [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
+	say "[fixed letter spacing]Usage:   [options] [command][paragraph break]
 Options:[line break]
 	 [special-style-1]-V, --version              output the version number[line break]
 	 -h, --help                   output usage information";
 	say "[fixed letter spacing]Commands:[line break]
-   [special-style-1]csv2geo [bracket]options[close bracket] <path>  convert csv to geojson
+   [special-style-1]csv2geo [options] <path>  convert csv to geojson
 
 Features created from [time of day] to [time of day][line break]Features updated from [time of day] to [time of day]".
 
@@ -348,7 +351,7 @@ Options:[line break]
 
 	
 To say help configure:
-	say "[fixed letter spacing]Usage: here-configure [bracket]options[close bracket] [bracket]command[close bracket][paragraph break]
+	say "[fixed letter spacing]Usage: here-configure [options] [command][paragraph break]
 Options:[line break]
   -V, --version  output the version number[line break]
   -h, --help     output usage information[paragraph break]
@@ -522,4 +525,4 @@ Glulx input handling rule for a line-event:
 
 [For printing the name of something: say "XXXX".]
 
-Test cli with "n/insert usb in usb/x data/here --help"
+Test cli with "n/insert usb in usb/x data/here --help/here xyz --help"
