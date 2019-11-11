@@ -87,6 +87,8 @@ After printing the name of the glass:
 		say " (full)";
 	otherwise:
 		say " (empty)".
+		
+Here-config-done is a truth state that varies. here-config-done is false.
 
 The laptop is a device. It is on the desk. The description is "Not too high-end, but not too slow either. It is fast enough for your needs and will be fast enough for a few years to come. It features a couple of USB slots.". Understand "computer" as the laptop.
 The USB slot is an open container and part of the laptop.
@@ -188,7 +190,7 @@ topic	response
 "[xyz] -h" or "[xyz] --help"	"[xyz help]"
 "[xyz] list -h" or "[xyz] list --help"	"[help list]"
 "[xyz] list" or "[xyz] ls"	"[list of spaces]"
-"[xyz] -V" or "[xyz] --version" or "[here] -V" or "[here] --version"	"[fixed letter spacing]1.0.0"
+"[xyz] -V" or "[xyz] --version" or "[here] -V" or "[here] --version"	"[fixed letter spacing]1.0.1"
 "[xyz] describe -h" or "[xyz] describe --help"	"[help describe]"
 "[xyz] describe x7y9z63"	"[describe space]"
 "[trans] -h" or "[trans] --help"	"[help transform]"
@@ -197,11 +199,12 @@ topic	response
 "[xyz] hexbin -h" or "[xyz] hexbin --help"	"[help hexbin]"
 "[xyz] show -h" or "[xyz] show --help"	"[help show]"
 "[conf] -h" or "[conf] --help"	"[help configure]"
-"[conf]"	"[first time][fixed letter spacing]prompt: Email: player@example.com[line break]prompt: Password: *******[paragraph break]Configuration successful.[line break][only][roman type](You've already set your configuration.)"
+"[conf]"	"[configure]"
 "[conf] verify"	"Verification successful."
 "[conf] set"	"[first time][fixed letter spacing]prompt: Email: player@example.com[line break]prompt: Password: *******[line break]Secrets verified successfully.[line break]? Select default AppId.[line break]   1) sdofisodfiosadf (DEFAULT)[line break]   2) sdjfkjkdooiwere[line break][enter default][only][roman type](You've already set your configuration.)"
 
-
+To say configure:
+		say "[if here-config-done is true][roman type](You've already set your configuration.)[otherwise][fixed letter spacing]prompt: Email: player@example.com[line break]prompt: Password: *******[paragraph break]Configuration successful.[line break]"; now here-config-done is true.
 
 To say show csv:
 	say "[fixed letter spacing] 56.0;23;0;northeastern;blabla[line break]
@@ -398,6 +401,8 @@ fortune
 "To be fully alive, fully human, and completely awake is to be continually thrown out of the nest. To live fully is to be always in no-man’s-land, to experience each moment as completely new and fresh. To live is to be willing to die over and over again. --Pema Chodron"
 “What you do in this world is a matter of no consequence. The question is what can you make people believe you have done. --Arthur Conan Doyle, A Study in Scarlet"
 “Perseverance is the hard work you do after you get tired of doing the hard work you already did. --Newt Gingrich”
+"There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors. --Leon Bambrick"
+"People will do anything, no matter how absurd, to avoid facing their own souls -- Carl Jung"
 
 To say fortunes:
 	choose a random row in the table of fortunes;
