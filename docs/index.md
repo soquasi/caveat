@@ -1,3 +1,3 @@
 #Caveat#
 
-Go to the [index] (./Release/Caveat.materials.index.html) page to play the game.
+Go to the [index] (./Release/index.html) page to play the game.
