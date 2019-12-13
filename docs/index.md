@@ -1,3 +1,3 @@
 #Caveat#
 
-Go to the [index] (./Release/index.html) page to play the game.
+Go to the <a href="./Release/index.htm">index</a> page to play the game.
